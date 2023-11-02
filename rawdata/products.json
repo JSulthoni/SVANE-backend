@@ -1,0 +1,1046 @@
+[
+	{
+		"_id": "653dccd8d7afd88d53e188cd",
+		"title": "Green Knitted Skirt",
+		"description": "The green knitted skirt is all about fun and flair. It's a playful choice that's perfect for brunch dates and night-time outings.",
+		"image1": "https://images.pexels.com/photos/9769853/pexels-photo-9769853.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/9770969/pexels-photo-9770969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": true,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"skirt"
+		],
+		"type": [
+			"featured"
+		],
+		"createdAt": "2023-10-29T03:09:12.277Z",
+		"updatedAt": "2023-10-29T03:09:12.277Z",
+		"__v": 0
+	},
+	{
+		"_id": "653debbcec840421636579d6",
+		"title": "Thin Body Fit White T-Shirt",
+		"description": "White t-shirt with classic comfort of timeless design. It's the go-to piece for a relaxed and effortless look. Whether you're dressing it up or down, this t-shirt is the foundation of your style.",
+		"image1": "https://images.pexels.com/photos/2220316/pexels-photo-2220316.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/2220315/pexels-photo-2220315.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": true,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"tshirt"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T05:21:00.064Z",
+		"updatedAt": "2023-10-29T05:30:27.632Z",
+		"__v": 0
+	},
+	{
+		"_id": "653debbcec840421636579d8",
+		"title": "Plain White T-Shirt",
+		"description": "Pure white t-shirt exudes timeless simplicity and elegance. It's a versatile wardrobe staple that's a must-have for every fashion enthusiast.",
+		"image1": "https://images.pexels.com/photos/9775825/pexels-photo-9775825.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/9775824/pexels-photo-9775824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"tshirt"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T05:21:00.066Z",
+		"updatedAt": "2023-10-29T05:21:00.066Z",
+		"__v": 0
+	},
+	{
+		"_id": "653debbcec840421636579d7",
+		"title": "Plain White T-Shirt",
+		"description": "This white t-shirt combines minimalist design with a touch of chic. It's a modern take on a classic style, making it suitable for casual outings or weekend relaxation.",
+		"image1": "https://images.pexels.com/photos/4101146/pexels-photo-4101146.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/4101142/pexels-photo-4101142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"tshirt"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T05:21:00.065Z",
+		"updatedAt": "2023-10-29T05:21:00.065Z",
+		"__v": 0
+	},
+	{
+		"_id": "653defa6ec840421636579df",
+		"title": "Classic White T-Shirt",
+		"description": "Embrace the summer vibes with our white t-shirt. Its clean and fresh look is perfect for sunny days and outdoor adventures.",
+		"image1": "https://images.pexels.com/photos/6311136/pexels-photo-6311136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/5262445/pexels-photo-5262445.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"tshirt"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T05:37:42.999Z",
+		"updatedAt": "2023-10-29T05:37:42.999Z",
+		"__v": 0
+	},
+	{
+		"_id": "653defa6ec840421636579de",
+		"title": "Casual White T-Shirt",
+		"description": "Achieve effortless casual cool with our white t-shirt. It's the epitome of comfort, making it perfect for your laid-back days.",
+		"image1": "https://images.pexels.com/photos/7665787/pexels-photo-7665787.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/7665783/pexels-photo-7665783.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"tshirt"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T05:37:42.999Z",
+		"updatedAt": "2023-10-29T05:37:42.999Z",
+		"__v": 0
+	},
+	{
+		"_id": "653defa6ec840421636579e0",
+		"title": "White Day T-Shirt",
+		"description": "Make a statement with our white graphic tee. It's a perfect canvas for your favorite designs, showcasing your personality.",
+		"image1": "https://images.pexels.com/photos/5262452/pexels-photo-5262452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/9775824/pexels-photo-9775824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"tshirt"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T05:37:42.999Z",
+		"updatedAt": "2023-10-29T05:37:42.999Z",
+		"__v": 0
+	},
+	{
+		"_id": "653df125ec840421636579e6",
+		"title": "Summer White T-Shirt",
+		"description": "The classic white summer t-shirt is a symbol of comfort and style. This t-shirt is a blank canvas, ready for your unique fashion expression.",
+		"image1": "https://images.pexels.com/photos/5325884/pexels-photo-5325884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/5325881/pexels-photo-5325881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"tshirt",
+			"summer"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T05:44:05.867Z",
+		"updatedAt": "2023-10-29T05:44:05.867Z",
+		"__v": 0
+	},
+	{
+		"_id": "653df125ec840421636579e4",
+		"title": "Plain White T-Shirt",
+		"description": "This white t-shirt combines minimalist design with a touch of chic. It's a modern take on a classic style, making it suitable for casual outings or weekend relaxation.",
+		"image1": "https://images.pexels.com/photos/991509/pexels-photo-991509.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/991511/pexels-photo-991511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": true,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"tshirt"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T05:44:05.867Z",
+		"updatedAt": "2023-10-29T05:44:05.867Z",
+		"__v": 0
+	},
+	{
+		"_id": "653df125ec840421636579e5",
+		"title": "Straight White T-Shirt",
+		"description": "The classic white straight t-shirt is back and better than ever. Stay cool in style with this essential piece that's perfect for days and nights.",
+		"image1": "https://images.pexels.com/photos/5384423/pexels-photo-5384423.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/5384424/pexels-photo-5384424.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": true,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"tshirt"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T05:44:05.867Z",
+		"updatedAt": "2023-10-29T05:44:05.867Z",
+		"__v": 0
+	},
+	{
+		"_id": "653df34aec840421636579eb",
+		"title": "Summer Black T-Shirt",
+		"description": "Wind down in style with our black t-shirt designed for ultimate relaxation. Enjoy your weekends with the perfect blend of comfort and chic.",
+		"image1": "https://images.pexels.com/photos/7319042/pexels-photo-7319042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/7319030/pexels-photo-7319030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": true,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"tshirt",
+			"summer"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T05:53:14.930Z",
+		"updatedAt": "2023-10-29T05:53:14.930Z",
+		"__v": 0
+	},
+	{
+		"_id": "653df34aec840421636579ea",
+		"title": "Thin White T-Shirt",
+		"description": "A white body fit t-shirt is a wardrobe staple for any women, and this one exudes timeless charm. Its versatility means you can wear it with almost anything, from jeans to joggers.",
+		"image1": "https://images.pexels.com/photos/6311652/pexels-photo-6311652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6311475/pexels-photo-6311475.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"tshirt"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T05:53:14.930Z",
+		"updatedAt": "2023-10-29T05:53:14.930Z",
+		"__v": 0
+	},
+	{
+		"_id": "653df34aec840421636579ec",
+		"title": "Thin Brown T-Shirt",
+		"description": "Express your artistic side with our brown t-shirt. Its simple canvas becomes a work of art when you add your creative touch.",
+		"image1": "https://images.pexels.com/photos/6311612/pexels-photo-6311612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6311599/pexels-photo-6311599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": true,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"tshirt"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T05:53:14.931Z",
+		"updatedAt": "2023-10-29T05:53:14.931Z",
+		"__v": 0
+	},
+	{
+		"_id": "653df5b5ec840421636579f0",
+		"title": "Plain Color Sweater",
+		"description": "Elevate your casual elegance with our plain color sweater. It's perfect for a relaxed yet refined look for various occasions.",
+		"image1": "https://images.pexels.com/photos/7479866/pexels-photo-7479866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/7479867/pexels-photo-7479867.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:03:33.097Z",
+		"updatedAt": "2023-10-29T06:03:33.097Z",
+		"__v": 0
+	},
+	{
+		"_id": "653df5b5ec840421636579f2",
+		"title": "Fit Beige T-Shirt",
+		"description": "The classic beige t-shirt brings a touch of vintage charm to your outfit. It's a perfect blend of nostalgia and modern comfort.",
+		"image1": "https://images.pexels.com/photos/4114824/pexels-photo-4114824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/4114827/pexels-photo-4114827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"tshirt"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:03:33.097Z",
+		"updatedAt": "2023-10-29T06:03:33.097Z",
+		"__v": 0
+	},
+	{
+		"_id": "653df5b5ec840421636579f1",
+		"title": "Classic Beige Hoodie",
+		"description": "Embrace timeless style with our beige hoodie. Its color add a touch of classic charm to your everyday activity.",
+		"image1": "https://images.pexels.com/photos/7479821/pexels-photo-7479821.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/7479818/pexels-photo-7479818.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": true,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [
+			"featured"
+		],
+		"createdAt": "2023-10-29T06:03:33.097Z",
+		"updatedAt": "2023-10-29T06:03:33.097Z",
+		"__v": 0
+	},
+	{
+		"_id": "653df83bec840421636579f6",
+		"title": "Broken White Hoodie",
+		"description": "This broken white hoodie is a versatile choice for everyone. Share your style with loved ones and enjoy its universal appeal.",
+		"image1": "https://images.pexels.com/photos/6311691/pexels-photo-6311691.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6311678/pexels-photo-6311678.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T06:14:19.033Z",
+		"updatedAt": "2023-10-29T06:14:19.033Z",
+		"__v": 0
+	},
+	{
+		"_id": "653df83bec840421636579f8",
+		"title": "Zipped Beige Hoodie",
+		"description": "Elevate your casual elegance with our zipped beige hoodie. It's perfect for a relaxed yet refined look for various occasions.",
+		"image1": "https://images.pexels.com/photos/8005444/pexels-photo-8005444.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/8005514/pexels-photo-8005514.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:14:19.034Z",
+		"updatedAt": "2023-10-29T06:14:19.034Z",
+		"__v": 0
+	},
+	{
+		"_id": "653df83bec840421636579f7",
+		"title": "Classic White Hoodie",
+		"description": "Enjoy sporty comfort with our white hoodie. It's designed to keep you at ease during active days and energetic outings.",
+		"image1": "https://images.pexels.com/photos/6974957/pexels-photo-6974957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6974959/pexels-photo-6974959.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:14:19.034Z",
+		"updatedAt": "2023-10-29T06:14:19.034Z",
+		"__v": 0
+	},
+	{
+		"_id": "653dfa1dec840421636579fc",
+		"title": "Plain Maroon Hoodie",
+		"description": "Our maroon hoodie offers unparalleled comfort, making it your cozy companion on chilly days.",
+		"image1": "https://images.pexels.com/photos/18700205/pexels-photo-18700205/free-photo-of-man-in-a-hoodie-sitting-with-his-hands-in-pockets.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/18700207/pexels-photo-18700207/free-photo-of-man-in-a-maroon-hoodie.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:22:21.512Z",
+		"updatedAt": "2023-10-29T06:22:21.512Z",
+		"__v": 0
+	},
+	{
+		"_id": "653dfa1dec840421636579fe",
+		"title": "Sport Violet Hoodie",
+		"description": "Get sporty with our violet hoodie, designed for both fashion and functionality. It's perfect for your active days.",
+		"image1": "https://images.pexels.com/photos/6311662/pexels-photo-6311662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6311671/pexels-photo-6311671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:22:21.513Z",
+		"updatedAt": "2023-10-29T06:22:21.513Z",
+		"__v": 0
+	},
+	{
+		"_id": "653dfa1dec840421636579fd",
+		"title": "Classic Gray Hoodie",
+		"description": "The classic gray pullover hoodie is back and better than ever. Stay warm in style with this timeless piece.",
+		"image1": "https://images.pexels.com/photos/6995862/pexels-photo-6995862.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6995871/pexels-photo-6995871.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": true,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:22:21.513Z",
+		"updatedAt": "2023-10-29T06:22:21.513Z",
+		"__v": 0
+	},
+	{
+		"_id": "653dfc9fec84042163657a03",
+		"title": "Summer Pink Hoodie",
+		"description": "Wind down in style with our pink hoodie, ideal for weekends and leisurely moments of relaxation.",
+		"image1": "https://images.pexels.com/photos/5325624/pexels-photo-5325624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/5325627/pexels-photo-5325627.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": true,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"outer",
+			"summer"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T06:33:03.529Z",
+		"updatedAt": "2023-10-29T06:33:03.529Z",
+		"__v": 0
+	},
+	{
+		"_id": "653dfc9fec84042163657a04",
+		"title": "Sport Creme Hoodie",
+		"description": "Achieve an elegant athleisure look with our creme hoodie. It's the perfect blend of comfort and charm.",
+		"image1": "https://images.pexels.com/photos/5734213/pexels-photo-5734213.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/5734223/pexels-photo-5734223.jpeg?auto=compress&cs=tinysrgb&w=300",
+		"price": 59,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"outer",
+			"summer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:33:03.529Z",
+		"updatedAt": "2023-10-29T06:33:03.529Z",
+		"__v": 0
+	},
+	{
+		"_id": "653dfc9fec84042163657a02",
+		"title": "Urban Gray Hoodie",
+		"description": "This gray urban hoodie effortlessly combines style and versatility, perfect for navigating the city streets.",
+		"image1": "https://images.pexels.com/photos/6311663/pexels-photo-6311663.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6311647/pexels-photo-6311647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:33:03.529Z",
+		"updatedAt": "2023-10-29T06:33:03.529Z",
+		"__v": 0
+	},
+	{
+		"_id": "653dff1bec84042163657a09",
+		"title": "Urban Beige Hoodie",
+		"description": "Achieve timeless minimalism with our beige hoodie. Its clean lines and understated charm make it a versatile addition to your wardrobe.",
+		"image1": "https://images.pexels.com/photos/6303682/pexels-photo-6303682.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6303681/pexels-photo-6303681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:43:39.058Z",
+		"updatedAt": "2023-10-29T06:43:39.058Z",
+		"__v": 0
+	},
+	{
+		"_id": "653dff1bec84042163657a08",
+		"title": "Urban Creme Hoodie",
+		"description": "Elevate your comfort and style with our fashion-forward creme hoodie. It's a contemporary piece for the modern individual.",
+		"image1": "https://images.pexels.com/photos/12606659/pexels-photo-12606659.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/12606660/pexels-photo-12606660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": true,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:43:39.058Z",
+		"updatedAt": "2023-10-29T06:43:39.058Z",
+		"__v": 0
+	},
+	{
+		"_id": "653dff1bec84042163657a0a",
+		"title": "Casual White Hoodie",
+		"description": "Enjoy sleek comfort with our white hoodie. It's designed to keep you cozy and stylish during your everyday adventures.",
+		"image1": "https://images.pexels.com/photos/6974955/pexels-photo-6974955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6974920/pexels-photo-6974920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:43:39.058Z",
+		"updatedAt": "2023-10-29T06:43:39.058Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e010aec84042163657a10",
+		"title": "Sport Gray Hoodie",
+		"description": "Hit the streets in style with our gray sport-ready hoodie. It's perfect for urban explorations and city adventures.",
+		"image1": "https://images.pexels.com/photos/5158811/pexels-photo-5158811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/5158838/pexels-photo-5158838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"outer",
+			"sport"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:51:54.236Z",
+		"updatedAt": "2023-10-29T06:51:54.236Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e010aec84042163657a0f",
+		"title": "Sport Gray T-Shirt",
+		"description": "Get sporty and stylish with our gray t-shirt. Its combination of fashion and functionality is ideal for active days.",
+		"image1": "https://images.pexels.com/photos/6303477/pexels-photo-6303477.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6303491/pexels-photo-6303491.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": false,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"outer",
+			"sport"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:51:54.236Z",
+		"updatedAt": "2023-10-29T06:51:54.236Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e010aec84042163657a0e",
+		"title": "Sport Yellow Hoodie",
+		"description": "Experience weekend bliss with our bright hoodie, designed for ultimate relaxation and laid-back style.",
+		"image1": "https://images.pexels.com/photos/6975104/pexels-photo-6975104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6975067/pexels-photo-6975067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 59,
+		"newArrival": true,
+		"category": [
+			"men",
+			"unisex"
+		],
+		"subcategory": [
+			"outer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T06:51:54.235Z",
+		"updatedAt": "2023-10-29T06:51:54.235Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e0395ec84042163657a14",
+		"title": "Brown Casual Glasses",
+		"description": "Wind down in style with our fashion glasses, perfect for leisurely weekends and moments of relaxation.",
+		"image1": "https://images.pexels.com/photos/5765762/pexels-photo-5765762.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/5765760/pexels-photo-5765760.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 39,
+		"newArrival": true,
+		"category": [
+			"men",
+			"women",
+			"unisex"
+		],
+		"subcategory": [
+			"accecories",
+			"glasses"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T07:02:45.850Z",
+		"updatedAt": "2023-10-29T07:02:45.850Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e0395ec84042163657a16",
+		"title": "Retro Round Glasses",
+		"description": "Step back in time with our retro round frame glasses. They embody nostalgia and classic style while offering modern comfort.",
+		"image1": "https://images.pexels.com/photos/5325580/pexels-photo-5325580.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/5325583/pexels-photo-5325583.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 39,
+		"newArrival": true,
+		"category": [
+			"men",
+			"women",
+			"unisex"
+		],
+		"subcategory": [
+			"accecories",
+			"glasses"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T07:02:45.850Z",
+		"updatedAt": "2023-10-29T07:02:45.850Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e0395ec84042163657a15",
+		"title": "Bold White Glasses",
+		"description": "Step back in time with our white bold frame glasses. They offer a blend of nostalgia and retro comfort for your everyday wear.",
+		"image1": "https://images.pexels.com/photos/7544699/pexels-photo-7544699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/7544703/pexels-photo-7544703.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 39,
+		"newArrival": true,
+		"category": [
+			"men",
+			"women",
+			"unisex"
+		],
+		"subcategory": [
+			"accecories",
+			"glasses"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T07:02:45.850Z",
+		"updatedAt": "2023-10-29T07:02:45.850Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e062bec84042163657a1b",
+		"title": "Bold Glamour Sunglasses",
+		"description": "Choose glamour with our bold fashion glasses. It's not just about style; it's about making a positive impact on your presence.",
+		"image1": "https://images.pexels.com/photos/18742605/pexels-photo-18742605/free-photo-of-young-brunette-woman-in-sunglasses-posing-in-a-fur-coat.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/18742587/pexels-photo-18742587/free-photo-of-model-wearing-cartier-sunglasses.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 39,
+		"newArrival": true,
+		"category": [
+			"women",
+			"unisex"
+		],
+		"subcategory": [
+			"accecories",
+			"glasses"
+		],
+		"type": [
+			"featured"
+		],
+		"createdAt": "2023-10-29T07:13:47.951Z",
+		"updatedAt": "2023-10-29T07:13:47.951Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e062bec84042163657a1c",
+		"title": "Eco Frame Glasses",
+		"description": "Choose fashion glasses that are both stylish and eco-friendly. Make a sustainable statement with this eyewear choice.",
+		"image1": "https://images.pexels.com/photos/4861374/pexels-photo-4861374.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/4861368/pexels-photo-4861368.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 39,
+		"newArrival": true,
+		"category": [
+			"men",
+			"women",
+			"unisex"
+		],
+		"subcategory": [
+			"accecories",
+			"glasses"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T07:13:47.951Z",
+		"updatedAt": "2023-10-29T07:13:47.951Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e062bec84042163657a1a",
+		"title": "Vintage Round Glasses",
+		"description": "Get the vintage look with our fashion glasses. Their timeless appeal adds a touch of classic charm to your outfit.",
+		"image1": "https://images.pexels.com/photos/4529038/pexels-photo-4529038.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/4529045/pexels-photo-4529045.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 39,
+		"newArrival": true,
+		"category": [
+			"men",
+			"women",
+			"unisex"
+		],
+		"subcategory": [
+			"accecories",
+			"glasses"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T07:13:47.950Z",
+		"updatedAt": "2023-10-29T07:13:47.950Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e08eaec84042163657a20",
+		"title": "Boho Knee Skirt",
+		"description": "Dive into boho magic with our knee skirt. It's perfect for carefree days and embodies the spirit of wanderlust and freedom.",
+		"image1": "https://images.pexels.com/photos/2820582/pexels-photo-2820582.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/3021601/pexels-photo-3021601.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 69,
+		"newArrival": true,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"skirt"
+		],
+		"type": [
+			"featured"
+		],
+		"createdAt": "2023-10-29T07:25:30.599Z",
+		"updatedAt": "2023-10-29T07:25:30.599Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e08eaec84042163657a22",
+		"title": "Summer Gray Skirt",
+		"description": "Choose an eco-friendly skirt that's both stylish and environmentally conscious. Make a sustainable statement with your fashion choices.",
+		"image1": "https://images.pexels.com/photos/12823107/pexels-photo-12823107.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/12823099/pexels-photo-12823099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 69,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"skirt",
+			"summer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T07:25:30.599Z",
+		"updatedAt": "2023-10-29T07:25:30.599Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e08eaec84042163657a21",
+		"title": "Denim Medium Skirt",
+		"description": "Embrace your flirty side with this denim skirt. Its playful design and graceful silhouette make it a perfect choice for feminine charm.",
+		"image1": "https://images.pexels.com/photos/15298434/pexels-photo-15298434/free-photo-of-woman-in-skirt-posing-near-fence.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/15298435/pexels-photo-15298435/free-photo-of-woman-posing-near-fence.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 69,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"skirt"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T07:25:30.599Z",
+		"updatedAt": "2023-10-29T07:25:30.599Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e0aa5ec84042163657a27",
+		"title": "Pattern Pencil Skirt",
+		"description": "Elevate your elegance with a chic pencil skirt. Its sleek and tailored design exudes sophistication for any occasion.",
+		"image1": "https://images.pexels.com/photos/5556671/pexels-photo-5556671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/5556685/pexels-photo-5556685.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 69,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"skirt"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T07:32:53.419Z",
+		"updatedAt": "2023-10-29T07:32:53.419Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e0aa5ec84042163657a28",
+		"title": "Eco Emerald Skirt",
+		"description": "Choose an eco-friendly skirt that's both stylish and environmentally conscious. Make a sustainable statement with your fashion choices.",
+		"image1": "https://images.pexels.com/photos/17066191/pexels-photo-17066191/free-photo-of-young-elegant-woman-walking-in-the-garden-and-smiling.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+		"image2": "https://images.pexels.com/photos/17066207/pexels-photo-17066207/free-photo-of-young-elegant-woman-walking-in-the-garden-and-smiling.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+		"price": 69,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"skirt"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T07:32:53.420Z",
+		"updatedAt": "2023-10-29T07:32:53.420Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e0aa5ec84042163657a26",
+		"title": "Classic Denim Skirt",
+		"description": "The classic denim skirt is a timeless delight. It's a versatile piece that pairs beautifully with your favorite tops and accessories.",
+		"image1": "https://images.pexels.com/photos/6770817/pexels-photo-6770817.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6770814/pexels-photo-6770814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 69,
+		"newArrival": true,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"skirt"
+		],
+		"type": [
+			"featured"
+		],
+		"createdAt": "2023-10-29T07:32:53.419Z",
+		"updatedAt": "2023-10-29T07:32:53.419Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e0ca1ec84042163657a2d",
+		"title": "Floral A-Line Skirt",
+		"description": "Style yourself in floral whimsy with this skirt. Its vibrant print and a-line style make it perfect for a sunny day out.",
+		"image1": "https://images.pexels.com/photos/5290526/pexels-photo-5290526.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/5290533/pexels-photo-5290533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 69,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"skirt",
+			"summer"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T07:41:21.357Z",
+		"updatedAt": "2023-10-29T07:41:21.357Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e0ca1ec84042163657a2c",
+		"title": "Plain Red Skirt",
+		"description": "Embrace your flirty side with this plain red skirt. Its playful design and graceful silhouette make it a perfect choice for feminine charm.",
+		"image1": "https://images.pexels.com/photos/14779768/pexels-photo-14779768.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/14779767/pexels-photo-14779767.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 69,
+		"newArrival": true,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"skirt"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T07:41:21.357Z",
+		"updatedAt": "2023-10-29T07:41:21.357Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e0ca1ec84042163657a2e",
+		"title": "Dark Checkered Skirt",
+		"description": "Embark on a weekend of ruffle romance with this skirt. Its playful ruffles and flirtatious design are perfect for a leisurely day.",
+		"image1": "https://images.pexels.com/photos/16737833/pexels-photo-16737833/free-photo-of-young-woman-in-a-cosplay-with-a-green-hat.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/16737835/pexels-photo-16737835/free-photo-of-young-woman-in-a-cosplay-wearing-a-green-hat.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 69,
+		"newArrival": false,
+		"category": [
+			"women"
+		],
+		"subcategory": [
+			"skirt"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T07:41:21.357Z",
+		"updatedAt": "2023-10-29T07:41:21.357Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e102cec84042163657a32",
+		"title": "Cow Pattern Fedora",
+		"description": "Make a bold fashion statement with this cow fedora hat. It's not just about style; it's about making a positive impact on the streets with your fashion choices.",
+		"image1": "https://images.pexels.com/photos/8107216/pexels-photo-8107216.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/8107188/pexels-photo-8107188.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": true,
+		"category": [
+			"unisex"
+		],
+		"subcategory": [
+			"accecories",
+			"hat"
+		],
+		"type": [
+			"featured"
+		],
+		"createdAt": "2023-10-29T07:56:28.308Z",
+		"updatedAt": "2023-10-29T07:56:28.308Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e102cec84042163657a33",
+		"title": "Classic Gray Fedora",
+		"description": "Elevate your style with this timeless fedora classic. Its versatile design adds a touch of sophistication to any outfit, making it a must-have accessory for every season.",
+		"image1": "https://images.pexels.com/photos/4652553/pexels-photo-4652553.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/4652560/pexels-photo-4652560.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": false,
+		"category": [
+			"unisex"
+		],
+		"subcategory": [
+			"accecories",
+			"hat"
+		],
+		"type": [],
+		"createdAt": "2023-10-29T07:56:28.308Z",
+		"updatedAt": "2023-10-29T07:56:28.308Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e102cec84042163657a34",
+		"title": "Modern Dark Shade",
+		"description": "Achieve urban coolness with this hat. It's designed for navigating the city streets with style and confidence, adding a touch of character to your look.",
+		"image1": "https://images.pexels.com/photos/5661568/pexels-photo-5661568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/5661565/pexels-photo-5661565.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": true,
+		"category": [
+			"unisex"
+		],
+		"subcategory": [
+			"accecories",
+			"hat"
+		],
+		"type": [
+			"trending"
+		],
+		"createdAt": "2023-10-29T07:56:28.308Z",
+		"updatedAt": "2023-10-29T07:56:28.308Z",
+		"__v": 0
+	},
+	{
+		"_id": "653e102cec84042163657a35",
+		"title": "Vintage Dark Fedora",
+		"description": "Embrace vintage charm with this elegant fedora hat. Its classic silhouette and timeless appeal make it a perfect choice for those who appreciate the classics.",
+		"image1": "https://images.pexels.com/photos/6206962/pexels-photo-6206962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"image2": "https://images.pexels.com/photos/6206974/pexels-photo-6206974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+		"price": 29,
+		"newArrival": false,
+		"category": [
+			"unisex"
+		],
+		"subcategory": [
+			"accecories",
+			"hat"
+		],
+		"type": [
+			"featured"
+		],
+		"createdAt": "2023-10-29T07:56:28.308Z",
+		"updatedAt": "2023-10-29T07:56:28.308Z",
+		"__v": 0
+	}
+]
