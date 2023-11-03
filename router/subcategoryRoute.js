@@ -41,7 +41,8 @@ router.get('/:id', async (req, res) => {
 // PUT
 router.put('/:id', async (req, res) => {
     try {
-        const subcategory = await Subcategory.findByIdAndUpdate(id)
+        const { id } = req.params
+        const subcategory = await Subcategory.findByIdAndUpdate(id, req.body)
         // if not found
         if (!subcategory) {
             return res.status(404).json({message : `Cannot find subcategory with ID of ${id}`})
@@ -60,6 +61,21 @@ router.post('/', async (req, res) => {
         const subcategories = await Subcategory.create(req.body)
         res.status(201).json(subcategories)
     } catch(error) {
+        res.status(500).json({message : error.message})
+    }
+})
+
+// delete a product
+// DELETE
+router.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const subcategory = await Subcategory.findByIdAndDelete(id)
+        if (!subcategory) {
+            return res.status(404).json({message : `Cannot find and delete subcategory with ID of ${id}`})
+        }
+        res.status(200).json(v)
+    } catch (error) {
         res.status(500).json({message : error.message})
     }
 })
