@@ -1,7 +1,7 @@
 {
-  "name": "mongo-api",
+  "name": "bundler-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend server for bundler",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
