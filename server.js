@@ -27,7 +27,7 @@ const URI = process.env.VITE_MONGO_API_URL
 mongoose.connect(URI)
     .then(() => {
         console.log('!!!Listening to mongo-api')
-        app.listen(process.env.PORT || 3000, () => {
+        app.listen(process.env.VITE_PORT || 3000, () => {
             console.log('Database Connection successful')
         })
     })
