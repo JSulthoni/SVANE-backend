@@ -8,41 +8,42 @@ const stripeRoute = require('./router/stripeRoute')
 const subcategoryRoute = require('./router/subcategoryRoute')
 const cors = require('cors')
 dotenv.config()
-
-
-// use
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended : false}))
+
+const PORT = process.env.PORT || 3000
+const URI = process.env.VITE_MONGO_API_URL
+
+
+// Routes
 app.use('/api/products', productRoute)
 app.use('/api/payment', stripeRoute)
 app.use('/api/subcategory', subcategoryRoute)
 
-// server homepage
+
+// Server homepage
 app.get('/' , (req, res) => {
-    res.send('server is running...')
+    res.send(`Running on port ${PORT}`)
 })
 
 
-const PORT = process.env.PORT || 3000
-
-app.listen(PORT, '0.0.0.0', (error) => {
-    if (error) throw error
-    console.log(`Listening on port ${PORT}`)
-})
-
-// Disabled for production
-
-// const URI = process.env.VITE_MONGO_API_URL
-// mongoose.connect(URI)
-//     .then(() => {
-//         console.log(`Connecting to ${URI}`)
-//         app.listen(PORT, "0.0.0.0" , () => {
-//             console.log(`Connection successful on port ${process.env.PORT}`)
-//         })
-//     })
-//     .catch((error) => {
-//         console.log('Error while connecting to database ' + error)
-//     })
+// Default listener
+// app.listen(PORT, '0.0.0.0', (error) => {
+    //     if (error) throw error
+    //     console.log(`Listening on port ${PORT}`)
+    // })
+    
+    
+mongoose.connect(URI)
+    .then(() => {
+        console.log(`Connecting to ${URI}`)
+        app.listen(PORT, "0.0.0.0" , () => {
+            console.log(`Connection successful on port ${PORT}`)
+        })
+    })
+    .catch((error) => {
+        console.log('Error while connecting to database ' + error)
+    })
 
 
