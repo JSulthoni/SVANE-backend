@@ -1,8 +1,9 @@
 {
-  "name": "bundler-api",
-  "version": "1.0.0",
+  "name": "bndlr-backend",
+  "version": "1.1.0",
   "description": "backend server for bundler",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",

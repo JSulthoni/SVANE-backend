@@ -1,40 +1,32 @@
-const express = require('express')
+import express from 'express'
 const app = express()
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 mongoose.set('strictQuery', false)
-const dotenv = require('dotenv')
-const productRoute = require('./router/productRoute')
-const stripeRoute = require('./router/stripeRoute')
-const subcategoryRoute = require('./router/subcategoryRoute')
-const cors = require('cors')
+import dotenv from 'dotenv'
 dotenv.config()
+import cors from 'cors'
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended : false}))
 
-const PORT = process.env.PORT || 3000
-const URI = process.env.VITE_MONGO_API_URL
+// Import Route
+import productRoute from './router/productRoute.js'
+import stripeRoute from './router/stripeRoute.js'
+import subcategoryRoute from './router/subcategoryRoute.js'
 
-
-// Routes
+// Middleware
 app.use('/api/products', productRoute)
 app.use('/api/payment', stripeRoute)
 app.use('/api/subcategory', subcategoryRoute)
 
-
 // Server homepage
 app.get('/' , (req, res) => {
-    res.send(`Running on port ${PORT}`)
+    res.send(`Hellow, this is BNDLR backend server. Running on port ${PORT}`)
 })
-
-
-// Default listener
-// app.listen(PORT, '0.0.0.0', (error) => {
-    //     if (error) throw error
-    //     console.log(`Listening on port ${PORT}`)
-    // })
     
-    
+// MongoDB connection    
+const PORT = process.env.PORT || 3000
+const URI = process.env.VITE_MONGO_API_URL   
 mongoose.connect(URI)
     .then(() => {
         console.log(`Connecting to ${URI}`)
@@ -45,5 +37,12 @@ mongoose.connect(URI)
     .catch((error) => {
         console.log('Error while connecting to database ' + error)
     })
+mongoose.connection.on('disconnected', () => {
+    console.log('mongoDB disconnected!')
+})
+mongoose.connection.on('connected', () => {
+    console.log('mongoDB connected!')
+})
+    
 
 
