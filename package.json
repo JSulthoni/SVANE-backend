@@ -1,7 +1,7 @@
 {
   "name": "bndlr-backend",
-  "version": "1.1.0",
-  "description": "backend server for bundler",
+  "version": "1.2.0",
+  "description": "backend server for bndlr",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -18,7 +18,7 @@
     "express": "^4.18.2",
     "mongodb": "^6.2.0",
     "mongoose": "^7.6.3",
-    "stripe": "^14.2.0"
+    "stripe": "^14.4.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

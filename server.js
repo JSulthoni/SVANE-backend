@@ -16,7 +16,7 @@ import subcategoryRoute from './router/subcategoryRoute.js'
 
 // Middleware
 app.use('/api/products', productRoute)
-app.use('/api/payment', stripeRoute)
+app.use('/api/stripe', stripeRoute)
 app.use('/api/subcategory', subcategoryRoute)
 
 // Server homepage

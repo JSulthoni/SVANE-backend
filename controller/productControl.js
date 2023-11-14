@@ -13,6 +13,13 @@ export const GET_ALL_PRODUCT = async (req, res) => {
         const sort = req.query.sort || 'asc';
         const limit = req.query.limit || 999;
 
+        let setSubcategory;
+        if (subcategory) {
+            setSubcategory = subcategory.split(',')
+        } else {
+            setSubcategory = 'all'
+        }
+
         let sortBy = {};
         if (sort === 'asc' || sort === 'desc') {
             sortBy.price = sort;
@@ -23,7 +30,7 @@ export const GET_ALL_PRODUCT = async (req, res) => {
         const query = {
             title: { $regex: search, $options: 'i' },
             price: { $lte: maxPrice },
-            subcategory: { $in: [subcategory] },
+            subcategory: { $in: [...setSubcategory] },
             type: { $in: [type] },
         };
 

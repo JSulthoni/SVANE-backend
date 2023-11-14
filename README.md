@@ -1,21 +1,19 @@
 # BUNDLER
 
-Welcome to the Bundler backend repository, 
-
-## Features
-* Uses key to restrict backend server connection.
+Welcome to the BNDLR backend repository, 
 
 ## Technologies
-Bundler backend utilise modules and libraries of following technologies:
+BNDLR backend utilise following technologies:
 
-Back-End:
-* ExpressJS: For building RESTful API.
-* Mongoose: For database schema and control.
-* MongoDB: For the database.
+* ExpressJS: For building RESTful API and HTTP request.
+* Mongoose: For database schema and query.
+* MongoDB: For database.
 * Node.js: For server-side scripting.
+* Stripe: For checkout test.
+
+Frontend code can be found [here](https://github.com/JSulthoni/BUNDLER-frontend)
 
 ## License
-
 [MIT](https://choosealicense.com/licenses/mit/)
 
 
