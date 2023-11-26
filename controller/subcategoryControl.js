@@ -2,7 +2,7 @@ import subcategoryModel from "../models/subcategoryModel.js";
 
 // get all subcategory
 // GET
-export const GET_ALL_SUBCATEGORY = async (req, res) => {
+export const GET_ALL_SUBCATEGORY = async (req, res, next) => {
     try {
     const title = req.query.title
         let subcategory;
@@ -16,65 +16,64 @@ export const GET_ALL_SUBCATEGORY = async (req, res) => {
             subcategory = await subcategoryModel.find({})
         }
         res.status(200).json(subcategory)
-
     } catch (error) {
-        res.status(500).json({message : error.message})
+        next(error)
     }
-}
+};
 
 
 // get a subcategory by id
 // GET
-export const GET_SUBCATEGORY = async (req, res) => {
+export const GET_SUBCATEGORY = async (req, res, next) => {
     try {
         const { id } = req.params
         const subcategory = await subcategoryModel.findById(id)
         res.status(200).json(subcategory)
     } catch (error) {
-        res.status(500).json({message : error.message})
+        next(error)
     }
-}
+};
 
 
 // update a subcategory
 // PUT
-export const UPDATE_SUBCATEGORY = async (req, res) => {
+export const UPDATE_SUBCATEGORY = async (req, res, next) => {
     try {
         const { id } = req.params
         const subcategory = await subcategoryModel.findByIdAndUpdate(id, req.body)
-        // if not found
+        // if update target is not found
         if (!subcategory) {
             return res.status(404).json({message : `Cannot find subcategory with ID of ${id}`})
         }
         const updatedSubcategory = await subcategoryModel.findById(id)
         res.status(200).json(updatedSubcategory)
     } catch (error) {
-        res.status(500).json({message : error.message})
+        next(error)
     }
-}
+};
 
 // create a subcategory
 // POST
-export const CREATE_SUBCATEGORY = async (req, res) => {
+export const CREATE_SUBCATEGORY = async (req, res, next) => {
     try {
-        const subcategories = await subcategoryModel.create(req.body)
-        res.status(201).json(subcategories)
+        const createdSubcategory = await subcategoryModel.create(req.body)
+        res.status(201).json(createdSubcategory)
     } catch(error) {
-        res.status(500).json({message : error.message})
+        next(error)
     }
-}
+};
 
 // delete a subcategory
 // DELETE
-export const DELETE_SUBCATEGORY = async (req, res) => {
+export const DELETE_SUBCATEGORY = async (req, res, next) => {
     try {
         const { id } = req.params
-        const subcategory = await subcategoryModel.findByIdAndDelete(id)
-        if (!subcategory) {
+        const deletedSubcategory = await subcategoryModel.findByIdAndDelete(id)
+        if (!deletedSubcategory) {
             return res.status(404).json({message : `Cannot find and delete subcategory with ID of ${id}`})
         }
-        res.status(200).json(v)
+        res.status(200).json(deletedSubcategory)
     } catch (error) {
-        res.status(500).json({message : error.message})
+        next(error)
     }
-}
+};

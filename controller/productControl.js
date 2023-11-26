@@ -3,7 +3,7 @@ import productModel from '../models/productModel.js'
 // get all products
 // GET
 
-export const GET_ALL_PRODUCT = async (req, res) => {
+export const GET_ALL_PRODUCT = async (req, res, next) => {
     try {
         const search = req.query.search || '';
         const category = req.query.category || '';
@@ -13,20 +13,23 @@ export const GET_ALL_PRODUCT = async (req, res) => {
         const sort = req.query.sort || 'asc';
         const limit = req.query.limit || 999;
 
+        // This block of code sets the subcategory to 'all' if there arent gquery for subcategory
         let setSubcategory;
-        if (subcategory) {
-            setSubcategory = subcategory.split(',')
-        } else {
-            setSubcategory = 'all'
-        }
-
+            if (subcategory) {
+                setSubcategory = subcategory.split(',')
+            } else {
+                setSubcategory = 'all'
+            }
+        
+        // This block of code set the default sortBy to 'asc'
         let sortBy = {};
-        if (sort === 'asc' || sort === 'desc') {
-            sortBy.price = sort;
-        } else {
-            sortBy.price = 'asc';
-        }
+            if (sort === 'asc' || sort === 'desc') {
+                sortBy.price = sort;
+            } else {
+                sortBy.price = 'asc';
+            }
 
+        // This object is the query parameter, option 'i' indicates case insensitivity
         const query = {
             title: { $regex: search, $options: 'i' },
             price: { $lte: maxPrice },
@@ -34,9 +37,11 @@ export const GET_ALL_PRODUCT = async (req, res) => {
             type: { $in: [type] },
         };
 
-        if (category) {
-            query.category = { $in: [category] };
-        }
+        // This block of code checks if there are category query, if present
+        // It will add new property to the query object
+            if (category) {
+                query.category = { $in: [category] };
+            }
 
         const getAllProduct = await productModel
             .find(query)
@@ -45,26 +50,26 @@ export const GET_ALL_PRODUCT = async (req, res) => {
 
         res.status(200).json(getAllProduct);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        next(error);
     }
 };
 
 
 // get a product by id
 // GET
-export const GET_PRODUCT = async (req, res) => {
+export const GET_PRODUCT = async (req, res, next) => {
     try {
         const { id } = req.params
         const getProduct = await productModel.findById(id)
         res.status(200).json(getProduct)
     } catch (error) {
-        res.status(500).json({message : error.message})
+        next(error);
     }
-}
+};
 
 // Update a product
 // PUT
-export const UPDATE_PRODUCT = async (req, res) => {
+export const UPDATE_PRODUCT = async (req, res, next) => {
     try {
         const { id } = req.params
         const updatedProduct = await productModel.findByIdAndUpdate(req.params.id, 
@@ -78,13 +83,13 @@ export const UPDATE_PRODUCT = async (req, res) => {
 
         res.status(200).json(updatedProduct)
     } catch (error) {
-        res.status(500).json({message : error.message})
+        next(error);
     }
-}
+};
 
 // Update many product
 // PUT
-export const UPDATE_MANY_PRODUCTS = async (req, res) => {
+export const UPDATE_MANY_PRODUCTS = async (req, res, next) => {
     try {
         const updateProducts = req.body
         const updatedProducts = await Promise.all(
@@ -105,24 +110,24 @@ export const UPDATE_MANY_PRODUCTS = async (req, res) => {
             return res.status(404).json({message : `some products not found`})
         }
     } catch (error) {
-        res.status(500).json({message: error.message})
+        next(error);
     }
-}
+};
 
 // create a product
 // POST
-export const CREATE_PRODUCT = async (req, res) => {
+export const CREATE_PRODUCT = async (req, res, next) => {
     try {
         const products = await productModel.create(req.body)
         res.status(201).json(products)
     } catch(error) {
-        res.status(500).json({message : error.message})
+        next(error);
     }
-}
+};
 
 // delete a product
 // DELETE
-export const DELETE_PRODUCT = async (req, res) => {
+export const DELETE_PRODUCT = async (req, res, next) => {
     try {
         const { id } = req.params
         const product = await productModel.findByIdAndDelete(id)
@@ -131,6 +136,6 @@ export const DELETE_PRODUCT = async (req, res) => {
         }
         res.status(200).json(product)
     } catch (error) {
-        res.status(500).json({message : error.message})
+        next(error);
     }
-}
+};

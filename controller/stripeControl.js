@@ -5,13 +5,17 @@ import Stripe from 'stripe';
 
 // create a session
 // POST
-export const STRIPE_CHECKOUT = async (req, res) => {
+export const STRIPE_CHECKOUT = async (req, res, next) => {
+    const DOMAIN = process.env.CLIENT_URL
+    const { products } = req.body
+
+    // Initializing stripe session if there are request from frontend
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
         apiVersion: '2023-10-16'
     })
-    const DOMAIN = process.env.CLIENT_URL
-    const { products } = req.body
-    console.log(products)
+
+    // This expression is to fetch the price from backend by looking the id of ordered
+    // produnct from the frontend
     const line_item = await Promise.all(
         products.map( async (product) => {
             const item = await productModel.findById(product.id)
@@ -30,7 +34,7 @@ export const STRIPE_CHECKOUT = async (req, res) => {
     );
 
     try {
-        // Creating stripe session
+        // This expression pass the request to stripe with mode of 'payment'
         const session = await stripe.checkout.sessions.create({
             line_items: line_item,
             mode: 'payment',
@@ -39,7 +43,7 @@ export const STRIPE_CHECKOUT = async (req, res) => {
             payment_method_types: ['card']
           });
 
-          // Posting order to database
+          // If there is session, then the order info will also stored into the database
           await stripeModel.create({
             products: [...products],
             stripeid: session.id
@@ -47,6 +51,6 @@ export const STRIPE_CHECKOUT = async (req, res) => {
 
         res.send(JSON.stringify({ url: session.url }))
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        next(error)
     };
 };
