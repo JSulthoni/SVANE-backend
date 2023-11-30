@@ -29,13 +29,23 @@ export const GET_ALL_PRODUCT = async (req, res, next) => {
                 sortBy.price = 'asc';
             }
 
-        // This object is the query parameter, option 'i' indicates case insensitivity
+        // This object is the query parameter
+        // option 'i' indicates case insensitivity
         const query = {
-            title: { $regex: search, $options: 'i' },
             price: { $lte: maxPrice },
             subcategory: { $in: [...setSubcategory] },
             type: { $in: [type] },
         };
+
+        // Check if search query search for trending/featured products
+        // Else it will search products by its title
+        if (search.toLowerCase() === 'trending') {
+            query.type = { $in: ['trending'] };
+        } else if (search.toLowerCase() === 'featured') {
+            query.type = { $in: ['featured'] };
+        } else {
+            query.title= { $regex: search, $options: 'i' };
+        }
 
         // This block of code checks if there are category query, if present
         // It will add new property to the query object
