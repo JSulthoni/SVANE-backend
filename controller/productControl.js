@@ -29,8 +29,7 @@ export const GET_ALL_PRODUCT = async (req, res, next) => {
                 sortBy.price = 'asc';
             }
 
-        // This object is the query parameter
-        // option 'i' indicates case insensitivity
+        // This object is the base query parameter
         const query = {
             price: { $lte: maxPrice },
             subcategory: { $in: [...setSubcategory] },
@@ -39,6 +38,7 @@ export const GET_ALL_PRODUCT = async (req, res, next) => {
 
         // Check if search query search for trending/featured products
         // Else it will search products by its title
+        // Options 'i' indicates case insensitivity
         if (search.toLowerCase() === 'trending') {
             query.type = { $in: ['trending'] };
         } else if (search.toLowerCase() === 'featured') {
@@ -71,6 +71,12 @@ export const GET_PRODUCT = async (req, res, next) => {
     try {
         const { id } = req.params
         const getProduct = await productModel.findById(id)
+
+        // If product id not found
+        if (!getProduct) {
+            return res.status(404).json({message : `Cannot get product with ID of ${id}`})
+        }
+
         res.status(200).json(getProduct)
     } catch (error) {
         next(error);
@@ -88,7 +94,7 @@ export const UPDATE_PRODUCT = async (req, res, next) => {
 
         // If product id not found
         if (!updatedProduct) {
-            return res.status(404).json({message : `Cannot find product with ID of ${id}`})
+            return res.status(404).json({message : `Cannot update product with ID of ${id}`})
         }
 
         res.status(200).json(updatedProduct)
@@ -103,7 +109,7 @@ export const UPDATE_MANY_PRODUCTS = async (req, res, next) => {
     try {
         const updateProducts = req.body
         const updatedProducts = await Promise.all(
-            updateProducts.map(async (update) => {
+            updateProducts.map( async (update) => {
                 const { _id, ...updateFields} = update;
 
                 return await productModel.findByIdAndUpdate(
@@ -117,7 +123,7 @@ export const UPDATE_MANY_PRODUCTS = async (req, res, next) => {
         // If id not found or any other properties did not match
         const notFound = updatedProducts.some((product) => !product)
         if (notFound) {
-            return res.status(404).json({message : `some products not found`})
+            return res.status(404).json({message : `Cannot update products with payload ${updatedProducts}`})
         }
     } catch (error) {
         next(error);
