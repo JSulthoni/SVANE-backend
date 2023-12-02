@@ -39,7 +39,7 @@ app.get('/' , (req, res) => {
 
 
 // MongoDB connection    
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080; // PORT rumahweb 8080
 const URI = process.env.VITE_MONGO_API_URL;
 mongoose.connect(URI)
     .then(() => {
