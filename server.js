@@ -34,7 +34,7 @@ app.use((err, req, res, next) => {
 
 // Server homepage
 app.get('/' , (req, res) => {
-    res.send(`Hellow, this is BNDLR backend server. Running on port ${PORT}`)
+    res.send(`Welcome, this is SVANE backend server. Running on port ${PORT}`)
 });
 
 

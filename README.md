@@ -1,6 +1,6 @@
 # BUNDLER
 
-Hello and Welcome, this is the BNDLR backend repository, 
+Hello and Welcome, this is the SVANE backend repository, 
 
 ## Key Objectives
 * Create a web application from scratch by using M.E.R.N Stack, HTML, Javascript, and CSS (SASS).
@@ -10,7 +10,7 @@ Hello and Welcome, this is the BNDLR backend repository,
 * Dynamic GET endpoint that adapt to the schema based on user input.
 
 ## Technologies
-BNDLR backend utilise following technologies:
+SVANE backend utilise following technologies:
 
 * ExpressJS: For building RESTful API and HTTP request.
 * Mongoose: For database schema and query.
@@ -18,7 +18,7 @@ BNDLR backend utilise following technologies:
 * Node.js: For server-side scripting.
 * Stripe: For checkout session.
 
-Frontend code can be found [here](https://github.com/JSulthoni/BUNDLER-frontend)
+Frontend code can be found [here](https://github.com/JSulthoni/SVANE-frontend)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
