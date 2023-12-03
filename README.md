@@ -1,13 +1,13 @@
-# BUNDLER
+# SVANE
 
 Hello and Welcome, this is the SVANE backend repository, 
 
 ## Key Objectives
 * Create a web application from scratch by using M.E.R.N Stack, HTML, Javascript, and CSS (SASS).
-* Provide an e-commerce platform with simple UI and high responsiveness across multiple screen-size.
+* Provide a shopping platform with responsive UI across multiple screen-size.
 
 ## Features
-* Dynamic GET endpoint that adapt to the schema based on user input.
+* Dynamic GET endpoint that adapt to the query of user input.
 
 ## Technologies
 SVANE backend utilise following technologies:
