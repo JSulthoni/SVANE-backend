@@ -1,4 +1,5 @@
 import productModel from '../models/productModel.js'
+import createError from '../utils/createError.js';
 
 // get all products
 // GET
@@ -39,24 +40,29 @@ export const GET_ALL_PRODUCT = async (req, res, next) => {
         // Check if search query search for trending/featured products
         // Else it will search products by its title
         // Options 'i' indicates case insensitivity
-        if (search.toLowerCase() === 'trending') {
-            query.type = { $in: ['trending'] };
-        } else if (search.toLowerCase() === 'featured') {
-            query.type = { $in: ['featured'] };
-        } else {
-            query.title= { $regex: search, $options: 'i' };
-        }
+        const searchTerms = search.toLowerCase().split(' ');
+            if (searchTerms.includes('trending') || searchTerms.includes('featured')) {
+                query.type = { $in: searchTerms };
+            } else {
+                query.$or = [
+                    { title: { $regex: search, $options: 'i' } },
+                    { type: { $in: searchTerms } },
+                ];
+            };
 
         // This block of code checks if there are category query, if present
         // It will add new property to the query object
             if (category) {
                 query.category = { $in: [category] };
-            }
+            };
 
         const getAllProduct = await productModel
             .find(query)
             .sort(sortBy)
             .limit(parseInt(limit, 10)); // Parsing the limit to integer
+        
+        // If request is failed, this will run
+        if (!getAllProduct) return next(createError(404, 'Failed to get all products'));    
 
         res.status(200).json(getAllProduct);
     } catch (error) {
@@ -72,12 +78,10 @@ export const GET_PRODUCT = async (req, res, next) => {
         const { id } = req.params
         const getProduct = await productModel.findById(id)
 
-        // If product id not found
-        if (!getProduct) {
-            return res.status(404).json({message : `Cannot get product with ID of ${id}`})
-        }
+        // If request is failed or product id not found
+        if (!getProduct) return next(createError(404, `Cannot get product with ID of ${id}`));
 
-        res.status(200).json(getProduct)
+        res.status(200).json(getProduct);
     } catch (error) {
         next(error);
     }
@@ -92,12 +96,10 @@ export const UPDATE_PRODUCT = async (req, res, next) => {
             { $set: req.body }, 
             { new: true})
 
-        // If product id not found
-        if (!updatedProduct) {
-            return res.status(404).json({message : `Cannot update product with ID of ${id}`})
-        }
+        // If request is failed or product id not found
+        if (!updatedProduct) return next(createError(404, `Cannot update product with ID of ${id}`));
 
-        res.status(200).json(updatedProduct)
+        res.status(200).json(updatedProduct);
     } catch (error) {
         next(error);
     }
@@ -107,9 +109,9 @@ export const UPDATE_PRODUCT = async (req, res, next) => {
 // PUT
 export const UPDATE_MANY_PRODUCTS = async (req, res, next) => {
     try {
-        const updateProducts = req.body
+        const updatePayload = req.body
         const updatedProducts = await Promise.all(
-            updateProducts.map( async (update) => {
+            updatePayload.map( async (update) => {
                 const { _id, ...updateFields} = update;
 
                 return await productModel.findByIdAndUpdate(
@@ -120,11 +122,11 @@ export const UPDATE_MANY_PRODUCTS = async (req, res, next) => {
             })
         );
 
-        // If id not found or any other properties did not match
+        // If some id not found or any other properties did not match
         const notFound = updatedProducts.some((product) => !product)
-        if (notFound) {
-            return res.status(404).json({message : `Cannot update products with payload ${updatedProducts}`})
-        }
+        if (notFound) return next(createError(404, `Cannot update products with payload of ${updatePayload}`));
+
+        res.status(200).json(updatedProducts);
     } catch (error) {
         next(error);
     }
@@ -134,8 +136,13 @@ export const UPDATE_MANY_PRODUCTS = async (req, res, next) => {
 // POST
 export const CREATE_PRODUCT = async (req, res, next) => {
     try {
-        const products = await productModel.create(req.body)
-        res.status(201).json(products)
+        const createPayload = req.body;
+        const createdProducts = await productModel.create(createPayload);
+
+        // If post request is failed 
+        if (!createdProducts) return next(createError(404, `Cannot create products with payload of ${createPayload}`));
+
+        res.status(201).json(createdProducts);
     } catch(error) {
         next(error);
     }
@@ -145,12 +152,13 @@ export const CREATE_PRODUCT = async (req, res, next) => {
 // DELETE
 export const DELETE_PRODUCT = async (req, res, next) => {
     try {
-        const { id } = req.params
-        const product = await productModel.findByIdAndDelete(id)
-        if (!product) {
-            return res.status(404).json({message : `Cannot find and delete product with ID of ${id}`})
-        }
-        res.status(200).json(product)
+        const { id } = req.params;
+        const deletedProduct = await productModel.findByIdAndDelete(id);
+
+        // If product id not found
+        if (!deletedProduct) return next(createError(404, `Cannot find and delete product with ID of ${id}`));
+
+        res.status(200).json(deletedProduct);
     } catch (error) {
         next(error);
     }
