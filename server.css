@@ -21,9 +21,29 @@ html, body {
 
 .container h1 {
     font-size: 3dvw;
-    margin-block: 10px;
+    margin-block: 5px;
 }
 
 .container h2 {
     font-size: 1dvw;
+    margin-block: 5px;
+}
+
+.container h4 {
+    font-size: 0.8dvw;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.container span, a {
+    color: #f0fdf4;
+    margin-top: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #16a34a;
 }

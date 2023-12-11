@@ -1,6 +1,6 @@
 {
   "name": "bndlr-backend",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "backend server for bndlr",
   "main": "server.js",
   "type": "module",
