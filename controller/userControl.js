@@ -28,7 +28,7 @@ export const CREATE_USER = async (req, res, next) => {
 // Sign In single user
 // POST
 export const SIGNIN_USER = async (req, res, next) => {
-    const body = await req.body
+    const body = await req.body;
     console.log('Body: ', body);
     try {
 
