@@ -22,7 +22,7 @@ router.get('/get/:id', VERIFY_USER, GET_USER);
 
 // Update a user
 // PUT
-router.put('/update/:id', VERIFY_USER, UPDATE_USER);
+router.put('/put/:id', VERIFY_USER, UPDATE_USER);
 
 // Delete a user
 // DELETE

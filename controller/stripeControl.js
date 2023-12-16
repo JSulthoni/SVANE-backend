@@ -49,8 +49,8 @@ export const STRIPE_CHECKOUT = async (req, res, next) => {
             stripeid: session.id
           });
 
-        res.send(JSON.stringify({ url: session.url }))
+        res.send(JSON.stringify({ url: session.url }));
     } catch (error) {
-        next(error)
+        next(error);
     };
 };

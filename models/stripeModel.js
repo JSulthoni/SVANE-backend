@@ -21,4 +21,4 @@ const stripeSchema = mongoose.Schema(
     }
 )
 
-export default mongoose.model('Stripe', stripeSchema)
+export default mongoose.model('Stripe', stripeSchema);

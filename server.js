@@ -8,6 +8,7 @@ import { dirname } from 'path';
 import cookieParser from 'cookie-parser';
 import productRoute from './router/productRoute.js';
 import stripeRoute from './router/stripeRoute.js';
+import categoryRoute from './router/categoryRoute.js';
 import subcategoryRoute from './router/subcategoryRoute.js';
 import userRoute from './router/userRoute.js';
 mongoose.set('strictQuery', false);
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname)));
 // Routes
 app.use('/api/products', productRoute);
 app.use('/api/stripe', stripeRoute);
+app.use('/api/category', categoryRoute);
 app.use('/api/subcategory', subcategoryRoute);
 app.use('/api/user', userRoute)
 

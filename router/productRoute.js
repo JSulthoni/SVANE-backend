@@ -1,31 +1,31 @@
-import express from 'express'
-import { CREATE_PRODUCT, DELETE_PRODUCT, GET_ALL_PRODUCT, GET_PRODUCT, UPDATE_MANY_PRODUCTS, UPDATE_PRODUCT } from '../controller/productControl.js'
-import VERIFY_HEADER from '../utils/verifyHeader.js'
-import { VERIFY_USER } from '../utils/verifySecrets.js'
-const router = express.Router()
+import express from 'express';
+import { CREATE_PRODUCT, DELETE_PRODUCT, GET_ALL_PRODUCT, GET_PRODUCT, UPDATE_MANY_PRODUCTS, UPDATE_PRODUCT } from '../controller/productControl.js';
+import VERIFY_HEADER from '../utils/verifyHeader.js';
+import { VERIFY_USER } from '../utils/verifySecrets.js';
+const router = express.Router();
 
 // get all products
 // GET
-router.get('/', VERIFY_HEADER, GET_ALL_PRODUCT)
+router.get('/', VERIFY_HEADER, GET_ALL_PRODUCT);
 
 // get a product by id
 // GET
-router.get('/get/:id', VERIFY_HEADER, GET_PRODUCT)
+router.get('/get/:id', VERIFY_HEADER, GET_PRODUCT);
 
 // Update a product
 // PUT
-router.put('/update/:id', VERIFY_USER, UPDATE_PRODUCT)
+router.put('/put/:id', VERIFY_USER, UPDATE_PRODUCT);
 
 // Update many products
 // PUT
-router.put('/updatemany/', VERIFY_USER, UPDATE_MANY_PRODUCTS)
+router.put('/putmany/', VERIFY_USER, UPDATE_MANY_PRODUCTS);
 
 // create a product
 // POST
-router.post('/create/', VERIFY_USER, CREATE_PRODUCT)
+router.post('/post/', VERIFY_USER, CREATE_PRODUCT);
 
 // delete a product
 // DELETE
-router.delete('/delete/:id', VERIFY_USER, DELETE_PRODUCT)
+router.delete('/delete/:id', VERIFY_USER, DELETE_PRODUCT);
 
 export default router;
