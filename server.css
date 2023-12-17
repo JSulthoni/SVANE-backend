@@ -14,9 +14,16 @@ html, body {
     margin: auto;
     top: 50%;
     left: 50%;
+    width: fit-content;
+    padding-inline: 20px;
     text-align: center;
     color: #16a34a;
     transform: translate(-50%, -50%);
+}
+
+.container img {
+    width: 100px;
+    aspect-ratio: 1 / 1;
 }
 
 .container h1 {
@@ -31,7 +38,7 @@ html, body {
 
 .container h4 {
     font-size: 0.8dvw;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-bottom: 10px;
 }
 
@@ -47,3 +54,17 @@ a {
 a:hover {
     color: #16a34a;
 }
+
+@media screen and (max-width: 1280px) {
+    .container h1 {
+        font-size: 36px;
+    }
+    
+    .container h2 {
+        font-size: 20px;
+    }
+    
+    .container h4 {
+        font-size: 16px;
+    }
+};

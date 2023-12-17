@@ -82,7 +82,7 @@ export const CREATE_CATEGORY = async (req, res, next) => {
         const createdCategory = await categoryModel.create(createPayload);
 
         // Throws error if create function failed
-        if (!createdCategory) return next(createError(404, `Cannot create category with payload of ${createPayload}`));
+        if (!createdCategory) return next(createError(500, `Cannot create category with payload of ${createPayload}`));
 
         res.status(201).json(createdCategory);
     } catch(error) {

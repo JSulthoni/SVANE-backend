@@ -113,7 +113,7 @@ export const CREATE_SUBCATEGORY = async (req, res, next) => {
 
         if (!createdSubcategory) {
             // Handle the case if create function failed
-            return next(createError(404, `Cannot create subcategory with payload of ${createPayload}`));
+            return next(createError(500, `Cannot create subcategory with payload of ${createPayload}`));
         }
 
         // Respond with the created subcategory
