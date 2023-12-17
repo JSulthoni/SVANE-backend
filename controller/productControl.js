@@ -140,7 +140,7 @@ export const CREATE_PRODUCT = async (req, res, next) => {
         const createdProducts = await productModel.create(createPayload);
 
         // If post request is failed 
-        if (!createdProducts) return next(createError(404, `Cannot create products with payload of ${createPayload}`));
+        if (!createdProducts) return next(createError(500, `Cannot create products with payload of ${createPayload}`));
 
         res.status(201).json(createdProducts);
     } catch(error) {
