@@ -10,6 +10,7 @@ import productRoute from './router/productRoute.js';
 import stripeRoute from './router/stripeRoute.js';
 import categoryRoute from './router/categoryRoute.js';
 import subcategoryRoute from './router/subcategoryRoute.js';
+import bagRoute from './router/bagRoute.js';
 import userRoute from './router/userRoute.js';
 mongoose.set('strictQuery', false);
 dotenv.config();
@@ -24,8 +25,14 @@ app.use(cookieParser());
 // Setting file directories from url to path
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+
 // Serve static files from the root directory
 app.use(express.static(path.join(__dirname)));
+
+
+// Serve the frontend static files
+app.use(express.static(path.join(__dirname, '..\bundler-frontend')));
 
 
 // Routes
@@ -33,7 +40,8 @@ app.use('/api/products', productRoute);
 app.use('/api/stripe', stripeRoute);
 app.use('/api/category', categoryRoute);
 app.use('/api/subcategory', subcategoryRoute);
-app.use('/api/user', userRoute)
+app.use('/api/bag', bagRoute);
+app.use('/api/user', userRoute);
 
 
 // Server homepage
