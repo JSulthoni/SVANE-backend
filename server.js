@@ -17,7 +17,10 @@ dotenv.config();
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));
 app.use(cookieParser());
@@ -28,12 +31,7 @@ const __dirname = dirname(__filename);
 
 
 // Serve static files from the root directory
-app.use(express.static(path.join(__dirname)));
-
-
-// Serve the frontend static files
-app.use(express.static(path.join(__dirname, '..\bundler-frontend')));
-
+// app.use(express.static(path.join(__dirname)));
 
 // Routes
 app.use('/api/products', productRoute);
@@ -45,9 +43,10 @@ app.use('/api/user', userRoute);
 
 
 // Server homepage
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'server.html'))
-});
+// app.get('/', (req, res) => {
+//     app.use(express.static(path.join(__dirname)));
+//     res.sendFile(path.join(__dirname, 'server.html'))
+// });
 
 // Error Handling
 // This error handling is placed below any avaiable routes
@@ -63,7 +62,7 @@ app.use((error, req, res, next) => {
     })
 });
 
-// MongoDB connection    
+// MongoDB and server connection    
 const PORT = process.env.PORT || 3000; // PORT cyclic 3000
 const URI = process.env.VITE_MONGO_API_URL;
 mongoose.connect(URI)

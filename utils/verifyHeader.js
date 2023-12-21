@@ -1,10 +1,10 @@
 import createError from "./createError.js";
 
 const VERIFY_HEADER = (req, res, next) => {
-    const headers = req.headers
     const SERVER_API_KEY = process.env.VITE_MONGO_API_KEY
-    // If request dont have header or does not provide key, it will deny access
     try {
+        // If request dont have header or does not provide key, it will deny access
+        const headers = req.headers
         const CLIENT_API_KEY = headers.authorization.split(' ')[1];
         if (CLIENT_API_KEY === SERVER_API_KEY) {
             next();

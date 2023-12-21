@@ -26,21 +26,26 @@ export const GET_ALL_BAG = async (req, res, next) => {
 // get user bag
 // GET
 export const GET_BAG = async (req, res, next) => {
-    // console.log('GET_BAG INITIALIZED')
-    // console.log('Headers: ', req.headers);
     try {
         await VERIFY_TOKEN(req, res, async () => {
             const { id } = req.user;
-            // console.log('GET BAG REQUESTED FOR ID: ', id);
-            // Use findOne directly with the user email
+
             const getBag = await bagModel.findOne({ userId: id })
-                .populate('cart.product')
-                .populate('wishlist.product');
+                .populate({
+                    path: 'cart.product',
+                    select: '_id title description image1 price'
+                })
+                .populate({
+                    path: 'wishlist.product',
+                    select: '_id title description image1 price'
+                });
 
-            // If the bag is not found
             if (!getBag) return next(createError(404, `Cannot get bag for user with ID of ${id}`));
-
-            res.status(200).json(getBag);
+            
+            res.status(200).json({
+                cart: getBag.cart,
+                wishlist: getBag.wishlist
+            });
         });
     } catch (error) {
         next(error);
@@ -48,25 +53,30 @@ export const GET_BAG = async (req, res, next) => {
 };
 
 
-// create a single bag
+
+// create a single bag DELETE SOON
 // POST
 export const CREATE_BAG = async (req, res, next) => {
     try {
-        const { email } = req.body;
-        const user_id = await userModel.findOne({ email });
+        await VERIFY_TOKEN(req, res, async () => {
+            const { id } = req.user;
+            const user = await userModel.findOne({ _id: id });
 
-        // Initializing user's bag as empty cart and wishlist array
-        const createdBag = await bagModel.create({
-            userId: user_id._id,
-            cart: [],
-            wishlist: []
-        });
+            // Initializing user's bag as empty cart and wishlist array
+            const createdBag = await bagModel.create({
+                userId: user._id,
+                cart: [],
+                wishlist: []
+            });
 
-        // If post request is failed 
-        if (!createdBag) return next(createError(500, `Failed create bag for user with ID of ${id}`));
+            // If post request is failed 
+            if (!createdBag) return next(createError(500, `Failed create bag for user with ID of ${id}`));
 
-        const { userId, cart, wishlist } =  createdBag;
-        res.status(201).json({cart, wishlist});
+            res.status(200).json({
+                cart: createdBag.cart,
+                wishlist: createdBag.wishlist
+            });
+        })
     } catch (error) {
         console.log('error while creating bag: ', error);
         next(error);
@@ -78,41 +88,46 @@ export const CREATE_BAG = async (req, res, next) => {
 export const UPDATE_BAG = async (req, res, next) => {
     try {
         await VERIFY_TOKEN(req, res, async () => {
-        
-        /*
-        req.body = {
-            cart : [{ productId: productId-1, quantity: quantity }, { productId: productId-2, quantity: quantity }, { productId: productId-3, quantity: quantity }],
-            wishlist : [{ productId: productId-1 }, { productId: productId-2 }, { productId: productId-3 }, { productId: productId-4 }]
-        }
-        */
-        const { id } = req.user;
-        const { cart, wishlist } = req.body;
-        // Find the bag by user email
-        const bag = await bagModel.findOne({ userId: id });
+            const { id } = req.user;
+            const { cart, wishlist } = req.body;
 
-            // Check if the bag exists
-            if (!bag) {
-                return next(createError(500, `Found error in accessing bag for user ${email}`));
-            }
+            const options = {
+                new: true,
+                populate: [
+                    { path: 'cart.product', select: '_id title description image1 price' },
+                    { path: 'wishlist.product', select: '_id title description image1 price' }
+                ]
+            };
 
-            // Updates the array of user bag's cart and wishlist
+            // Using findOneAndUpdate() to update user's bag
+            const updatedBag = await bagModel.findOneAndUpdate(
+                { userId: id },
+                {
+                    $set: {
+                        cart: cart.length > 0 ? cart.map((item) => ({
+                            product: item._id,
+                            quantity: parseInt(item.quantity)
+                        })) : [],
+                        wishlist: wishlist.length > 0 ? wishlist.map((_id) => ({ product: _id })) : []
+                    }
+                },
+                options
+            );
             
-            if (cart) {
-                bag.cart.push(cart.map((car) => car));
-            }
-            if (wishlist) {
-                bag.wishlist.push(wishlist.map((wish) => wish));
-            }
+            // Create error of gab is not found
+            if (!updatedBag) return next(createError(404, `Cannot get bag for user with ID of ${id}`));
+            
 
-        // Save the updated bag
-        const updatedBag = await bag.save();
-
-        res.status(200).json(updatedBag);
-        })
+            res.status(200).json({
+                cart: updatedBag.cart,
+                wishlist: updatedBag.wishlist
+            });
+        });
     } catch (error) {
         next(error);
-    }    
+    }
 };
+
 
 // Delete user's bag
 // DELETE

@@ -7,6 +7,8 @@ import Stripe from 'stripe';
 // POST
 export const STRIPE_CHECKOUT = async (req, res, next) => {
     const DOMAIN = process.env.CLIENT_URL
+
+    // In this function, the array of object of products is referenced as { products }
     const { products } = req.body
 
     // Initializing stripe session if there are request from frontend
@@ -18,8 +20,7 @@ export const STRIPE_CHECKOUT = async (req, res, next) => {
     // produnct from the frontend
     const line_item = await Promise.all(
         products.map( async (product) => {
-            const item = await productModel.findById(product.id)
-            console.log(item)
+            const item = await productModel.findById(product._id)
             return {
                 price_data: {
                     currency:"usd",
