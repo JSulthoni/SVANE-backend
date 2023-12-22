@@ -108,7 +108,9 @@ export const UPDATE_BAG = async (req, res, next) => {
                             product: item._id,
                             quantity: parseInt(item.quantity)
                         })) : [],
-                        wishlist: wishlist.length > 0 ? wishlist.map((_id) => ({ product: _id })) : []
+                        wishlist: wishlist.length > 0 ? wishlist.map((item) => ({ 
+                            product: item._id 
+                        })) : []
                     }
                 },
                 options

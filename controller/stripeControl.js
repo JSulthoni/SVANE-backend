@@ -1,6 +1,7 @@
 import productModel from '../models/productModel.js';
 import stripeModel from '../models/stripeModel.js';
 import Stripe from 'stripe';
+import createError from '../utils/createError.js';
 
 
 // create a session
@@ -8,8 +9,8 @@ import Stripe from 'stripe';
 export const STRIPE_CHECKOUT = async (req, res, next) => {
     const DOMAIN = process.env.CLIENT_URL
 
-    // In this function, the array of object of products is referenced as { products }
-    const { products } = req.body
+    // In this function, the array of object of products is referenced as { cart }
+    const { cart } = req.body
 
     // Initializing stripe session if there are request from frontend
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
@@ -19,17 +20,20 @@ export const STRIPE_CHECKOUT = async (req, res, next) => {
     // This expression is to fetch the price from backend by looking the id of ordered
     // produnct from the frontend
     const line_item = await Promise.all(
-        products.map( async (product) => {
-            const item = await productModel.findById(product._id)
+        cart.map( async (item) => {
+            const product = await productModel.findById(item.product._id);
+            if (!product) {
+                return next(createError(404, `Product not found for ${item.product._id}`));
+            }
             return {
                 price_data: {
                     currency:"usd",
-                    unit_amount: parseInt(item.price * 100),
+                    unit_amount: parseInt(product.price * 100),
                     product_data: {
-                        name: item.title
+                        name: product.title
                     }
                 },
-                quantity: parseInt(product.quantity)
+                quantity: parseInt(item.quantity)
             }
         })
     );
@@ -44,14 +48,17 @@ export const STRIPE_CHECKOUT = async (req, res, next) => {
             payment_method_types: ['card']
           });
 
-          // If there is session, then the order info will also stored into the database
-          await stripeModel.create({
-            products: [...products],
+        if (!session) return next(createError(500, 'Stripe server error while processing order'));
+
+        // If there is session, then the order info will also stored into the database
+        await stripeModel.create({
+            products: [...cart],
             stripeid: session.id
-          });
+        });
 
         res.send(JSON.stringify({ url: session.url }));
     } catch (error) {
+        console.error('Error in creating checkout session', error);
         next(error);
     };
 };

@@ -9,7 +9,6 @@ import { VERIFY_TOKEN } from '../utils/verifySecrets.js';
 // Create a new user and issue a token upon successful account creation
 // POST
 export const CREATE_USER = async (req, res, next) => {
-    console.log('CREATE USER INITIALIZED: ', req.body);
     try {
         // Checking if the body has all the required parameters
         const { email, password, wishlist } = await req.body
@@ -29,7 +28,9 @@ export const CREATE_USER = async (req, res, next) => {
             const createdBag = await bagModel.create({
                 userId: createdUser._id,
                 cart: [],
-                wishlist: wishlist.map((item) => ({ product: item }))
+                wishlist: wishlist.length > 0 ? wishlist.map((item) => ({ 
+                    product: item._id 
+                })) : []
             });
             // If server fails to create user bag
             if (!createdBag) return next(createError(500, `Failed create bag for user with ID of ${createdUser._id}`));
@@ -57,7 +58,6 @@ export const CREATE_USER = async (req, res, next) => {
             return next(createError(500, `Failed create credentials for user ${email}`));
         }
     } catch (error) {
-        console.log('FAILED IN INITIALIZING CREATE USER', error.message);
         next(error);
     }
 };
@@ -132,7 +132,6 @@ export const GET_USER = async (req, res, next) => {
         // If user id not found
         if (!getUser) return next(createError(404, `Cannot get user with ID of ${id}`));
         
-
         res.status(200).json(getUser);
     } catch (error) {
         next(error);
@@ -151,7 +150,6 @@ export const UPDATE_USER = async (req, res, next) => {
         // If user id not found
         if (!updatedUser) return next(createError(404, `Cannot update user with ID of ${id}`));
         
-
         res.status(200).json(updatedUser);
     } catch (error) {
         next(error);
