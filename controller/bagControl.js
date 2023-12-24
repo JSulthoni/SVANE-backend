@@ -28,6 +28,7 @@ export const GET_ALL_BAG = async (req, res, next) => {
 export const GET_BAG = async (req, res, next) => {
     try {
         await VERIFY_TOKEN(req, res, async () => {
+            // id is the user's _id from credentials included in cookie
             const { id } = req.user;
 
             const getBag = await bagModel.findOne({ userId: id })
@@ -59,6 +60,7 @@ export const GET_BAG = async (req, res, next) => {
 export const CREATE_BAG = async (req, res, next) => {
     try {
         await VERIFY_TOKEN(req, res, async () => {
+            // id is the user's _id from credentials included in cookie
             const { id } = req.user;
             const user = await userModel.findOne({ _id: id });
 
@@ -88,6 +90,7 @@ export const CREATE_BAG = async (req, res, next) => {
 export const UPDATE_BAG = async (req, res, next) => {
     try {
         await VERIFY_TOKEN(req, res, async () => {
+            // id is the user's _id from credentials included in cookie
             const { id } = req.user;
             const { cart, wishlist } = req.body;
 
