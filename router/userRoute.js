@@ -1,8 +1,8 @@
 import express from 'express';
-import VERIFY_HEADER from '../utils/verifyHeader.js';
-import { CREATE_USER, DELETE_USER, GET_ALL_USER, GET_USER, SIGNIN_USER, UPDATE_USER } from '../controller/userControl.js';
-import { VERIFY_ADMIN, VERIFY_TOKEN, VERIFY_USER } from '../utils/verifySecrets.js';
 const router = express.Router();
+import VERIFY_HEADER from '../utils/verifyHeader.js';
+import { CREATE_USER, DELETE_USER, GET_ALL_USER, GET_USER, SIGNIN_USER, SIGNOUT_USER, UPDATE_USER } from '../controller/userControl.js';
+import { VERIFY_ADMIN, VERIFY_TOKEN, VERIFY_USER } from '../utils/verifySecrets.js';
 
 // Create new user
 //POST
@@ -12,21 +12,25 @@ router.post('/register', VERIFY_HEADER, CREATE_USER);
 // POST
 router.post('/signin', VERIFY_HEADER, SIGNIN_USER);
 
+// Sign out new user
+// GET
+router.get('/signout', VERIFY_HEADER, SIGNOUT_USER);
+
 // Get all user
 // GET
-router.get('/', VERIFY_ADMIN, GET_ALL_USER);
+router.get('/', VERIFY_HEADER, VERIFY_ADMIN, GET_ALL_USER);
 
 // Get a user by id
 // GET
-router.get('/get/:id', VERIFY_USER, GET_USER);
+router.get('/get/:id',  VERIFY_HEADER, VERIFY_USER, GET_USER);
 
 // Update a user
 // PUT
-router.put('/put/:id', VERIFY_USER, UPDATE_USER);
+router.put('/put/:id',  VERIFY_HEADER, VERIFY_USER, UPDATE_USER);
 
 // Delete a user
 // DELETE
-router.delete('/delete/:id', VERIFY_USER, DELETE_USER);
+router.delete('/delete/:id',  VERIFY_HEADER, VERIFY_USER, DELETE_USER);
 
 
 // VERIFY ROUTES
