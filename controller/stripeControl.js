@@ -19,10 +19,8 @@ export const STRIPE_CHECKOUT = async (req, res, next) => {
             // In this function, the array of object of products is referenced as { cart }
             const { cart } = req.body
 
-            // Direct_order is the options wether the checkout is made from cart or product page
-            // 0 is from cart, 1 is from product page
+            // Options wether the checkout is made from cart or wishlist or direct from product page
             const { option } = req.body
-            console.log(cart[0])
 
             // Initializing stripe session if there are request from frontend
             const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {

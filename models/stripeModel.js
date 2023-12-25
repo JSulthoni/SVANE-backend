@@ -13,20 +13,20 @@ const stripeSchema = mongoose.Schema(
         products: {
             type: [
                 {
-                product: {
-                    type: {
-                    _id: String,
-                    title: String,
-                    description: String,
-                    price: Number,
-                    image1: String
+                    product: {
+                        type: {
+                        _id: String,
+                        title: String,
+                        description: String,
+                        image1: String,
+                        price: Number
+                        },
+                        required: true
                     },
-                    required: true
-                },
-                quantity: {
-                    type: Number,
-                    required: true
-                }
+                    quantity: {
+                        type: Number,
+                        required: true
+                    }
                 }
             ],
             required: true,

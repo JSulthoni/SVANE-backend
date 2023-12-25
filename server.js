@@ -30,9 +30,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 
-// Serve static files from the root directory
-// app.use(express.static(path.join(__dirname)));
-
 // Routes
 app.use('/api/products', productRoute);
 app.use('/api/stripe', stripeRoute);
@@ -43,10 +40,11 @@ app.use('/api/user', userRoute);
 
 
 // Server homepage
-// app.get('/', (req, res) => {
-//     app.use(express.static(path.join(__dirname)));
-//     res.sendFile(path.join(__dirname, 'server.html'))
-// });
+app.get('/', (req, res) => {
+    // Serve static files from the root directory
+    app.use(express.static(path.join(__dirname)));
+    res.sendFile(path.join(__dirname, 'server.html'))
+});
 
 // Error Handling
 // This error handling is placed below any avaiable routes

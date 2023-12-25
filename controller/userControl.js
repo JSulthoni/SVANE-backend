@@ -6,7 +6,7 @@ import createError from "../utils/createError.js";
 import { VERIFY_TOKEN } from '../utils/verifySecrets.js';
 
 
-// Create a new user and issue a token upon successful account creation
+// Create a new user and issue access_token upon successful account creation
 // POST
 export const CREATE_USER = async (req, res, next) => {
     try {
@@ -22,12 +22,13 @@ export const CREATE_USER = async (req, res, next) => {
             password: hash
         });
 
-
         // Initializing user's bag if user account successfully created
         if (createdUser) {
             const createdBag = await bagModel.create({
                 userId: createdUser._id,
                 cart: [],
+
+                // User may have wishlist before creating an account. when user create an account, the data in wishlist will be taken into bag creation
                 wishlist: wishlist.length > 0 ? wishlist.map((item) => ({ 
                     product: item._id 
                 })) : []
@@ -43,13 +44,18 @@ export const CREATE_USER = async (req, res, next) => {
         // Create a token for the newly created user
         const token = jwt.sign(
             { id: createdUser._id, isAdmin: createdUser.isAdmin, isSeller: createdUser.isSeller },
-            process.env.JWT_SECRET_KEY_DO_NOT_PUBLISH
+            process.env.JWT_SECRET_KEY_DO_NOT_PUBLISH, 
+            {
+                expiresIn: '24h'
+            }
         );
 
 
         if (createdUser && token) {
+
             // Destructuring to filter out sensitive information before sending it to client
             const { password, isAdmin, isSeller, ...otherDetails } = createdUser._doc;
+
             // Set the token as a cookie and send it in the response
             res.cookie('access_token', token, {
                 httpOnly: true,
@@ -80,10 +86,16 @@ export const SIGNIN_USER = async (req, res, next) => {
 
         // Create a token that will be send to user if request is successful
         const token = jwt.sign({ id: isUser._id, isAdmin: isUser.isAdmin, isSeller: isUser.isSeller }, 
-            process.env.JWT_SECRET_KEY_DO_NOT_PUBLISH
+            process.env.JWT_SECRET_KEY_DO_NOT_PUBLISH,
+            {
+                expiresIn: '24h'
+            }
         );
 
+        // Destructuring to filter out sensitive information before sending it to client
         const { password, isAdmin, isSeller, ...otherDetails } = isUser._doc;
+        
+        // Set the token as a cookie and send it in the response
         res.cookie('access_token', token, {
             httpOnly: true,
         }).status(201).json({...otherDetails});
@@ -99,16 +111,17 @@ export const SIGNOUT_USER = async (req, res, next) => {
     try {
         await VERIFY_TOKEN(req, res, async () => {
             const { id } = req.user
-            res.cookie('access_token', id, {
+            res.cookie('access_token', id, 
+            {
                 httpOnly: true,
                 maxAge: 1
-            }).status(201).json('Sign Out Success');
+            }
+            ).status(201).json('Sign Out Success');
         })
     } catch (error) {
         next(error);
     }
 };
-
 
 // get all user
 // GET

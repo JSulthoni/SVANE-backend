@@ -3,14 +3,14 @@
 Hello and Welcome, this is the SVANE backend repository. SVANE is a fullstack M.E.R.N project 🚀 🌟
 
 ## Key Objectives
-* Create a web application backend server by using NodeJS, Express, Mongoose, and MongoDB.
-* Create a secure database storage for user and product data by applyig protected route and jsonwebtoken.
+* Create a secure backend server by implementing protected route and jsonwebtoken.
+* Solve the problem of common security issue by using cookie and signed credentials for access token.
+
 
 ## Features
 * A developed get product endpoint that adapt to user input.
-* Routes require API key and/or authorization.
-* Cookie-parser to hash user password.
-* Jsonwebtoken to generate access token to user.
+* Routes require API key and/or access token.
+* 
 
 ## Technologies
 SVANE backend utilise following technologies:
@@ -30,3 +30,5 @@ Frontend code can be found [here](https://github.com/JSulthoni/SVANE-frontend)
 
 ## Author
 - [@JSulthoni](https://www.github.com/JSulthoni)
+
+if you like it, dont forget to give it a ✨✨✨!

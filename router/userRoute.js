@@ -13,7 +13,7 @@ router.post('/register', VERIFY_HEADER, CREATE_USER);
 router.post('/signin', VERIFY_HEADER, SIGNIN_USER);
 
 // Sign out new user
-// POST
+// GET
 router.get('/signout', VERIFY_HEADER, SIGNOUT_USER);
 
 // Get all user
