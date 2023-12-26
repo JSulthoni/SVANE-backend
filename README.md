@@ -10,7 +10,6 @@ Hello and Welcome, this is the SVANE backend repository. SVANE is a fullstack M.
 ## Features
 * A developed get product endpoint that adapt to user input.
 * Routes require API key and/or access token.
-* 
 
 ## Technologies
 SVANE backend utilise following technologies:

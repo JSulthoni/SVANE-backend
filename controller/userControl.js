@@ -107,17 +107,14 @@ export const SIGNIN_USER = async (req, res, next) => {
 
 // Sign Out single user
 // GET
-export const SIGNOUT_USER = async (req, res, next) => {
+export const SIGNOUT_USER = (req, res, next) => {
     try {
-        await VERIFY_TOKEN(req, res, async () => {
-            const { id } = req.user
-            res.cookie('access_token', id, 
-            {
-                httpOnly: true,
-                maxAge: 1
-            }
-            ).status(201).json('Sign Out Success');
-        })
+        res.cookie('access_token', '0', 
+        {
+            httpOnly: true,
+            maxAge: 1
+        }
+        ).status(201).json('Sign Out Success');
     } catch (error) {
         next(error);
     }
