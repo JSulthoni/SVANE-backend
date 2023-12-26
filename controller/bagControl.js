@@ -1,4 +1,4 @@
-import bagModel from '../models/BagModel.js';
+import bagModel from '../models/bagModel.js';
 import userModel from '../models/userModel.js';
 import createError from '../utils/createError.js';
 import { VERIFY_TOKEN } from '../utils/verifySecrets.js';
