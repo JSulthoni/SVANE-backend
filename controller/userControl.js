@@ -1,5 +1,5 @@
 import userModel from '../models/userModel.js';
-import bagModel from '../models/BagModel.js';
+import bagModel from '../models/bagModel.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import createError from "../utils/createError.js";

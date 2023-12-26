@@ -1,6 +1,6 @@
 import productModel from '../models/productModel.js';
 import stripeModel from '../models/stripeModel.js';
-import bagModel from '../models/BagModel.js';
+import bagModel from '../models/bagModel.js';
 import Stripe from 'stripe';
 import createError from '../utils/createError.js';
 import { VERIFY_TOKEN } from '../utils/verifySecrets.js';
