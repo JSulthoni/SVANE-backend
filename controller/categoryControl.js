@@ -1,6 +1,7 @@
 import categoryModel from "../models/categoryModel.js";
 import createError from "../utils/createError.js";
 
+
 // get all category
 // GET
 export const GET_ALL_CATEGORY = async (req, res, next) => {

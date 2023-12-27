@@ -14,7 +14,7 @@ export const CREATE_USER = async (req, res, next) => {
         const { email, password, wishlist } = await req.body
 
         // Creating new user
-        // Using bcryptjs to hash password, email and password are provided from req.body
+        // Using bcryptjs to hash password, email and password are provided from client
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
         const createdUser = await userModel.create({
@@ -40,19 +40,16 @@ export const CREATE_USER = async (req, res, next) => {
             return next(createError(500, `Failed to create an account for user: ${email}`));
         }
 
-
         // Create a token for the newly created user
         const token = jwt.sign(
             { id: createdUser._id, isAdmin: createdUser.isAdmin, isSeller: createdUser.isSeller },
             process.env.JWT_SECRET_KEY_DO_NOT_PUBLISH, 
             {
-                expiresIn: '24h'
+                expiresIn: '6h'
             }
         );
 
-
         if (createdUser && token) {
-
             // Destructuring to filter out sensitive information before sending it to client
             const { password, isAdmin, isSeller, ...otherDetails } = createdUser._doc;
 
@@ -88,7 +85,7 @@ export const SIGNIN_USER = async (req, res, next) => {
         const token = jwt.sign({ id: isUser._id, isAdmin: isUser.isAdmin, isSeller: isUser.isSeller }, 
             process.env.JWT_SECRET_KEY_DO_NOT_PUBLISH,
             {
-                expiresIn: '24h'
+                expiresIn: '6h'
             }
         );
 
@@ -105,6 +102,37 @@ export const SIGNIN_USER = async (req, res, next) => {
 };
 
 
+// Refresh user
+// GET
+export const REFRESH_USER = async (req, res, next) => {
+    try {
+        await VERIFY_TOKEN(req, res, async () => {
+            const { id } = req.user;
+            // If user token expires, user will not have id present in verify token
+            // thus will not return new access token 
+            if (!id) return next(createError(401, 'Please sign in again'));
+
+            const isUser =  await userModel.findOne({ _id: id });
+            if (!isUser) return next(createError(404, 'Credentials not found'));
+
+            // Create a token that will be send to user if request is successful
+            const token = jwt.sign({ id: isUser._id, isAdmin: isUser.isAdmin, isSeller: isUser.isSeller }, 
+                process.env.JWT_SECRET_KEY_DO_NOT_PUBLISH,
+                {
+                    expiresIn: '6h'
+                }
+            );
+          
+            // Set the token as a cookie and send it in the response
+            res.cookie('access_token', token, {
+                httpOnly: true,
+            }).status(201).json('Welcome back to SVANE');
+        })
+    } catch (error) {
+        next(error);
+    }
+};
+
 // Sign Out single user
 // GET
 export const SIGNOUT_USER = (req, res, next) => {
@@ -119,6 +147,8 @@ export const SIGNOUT_USER = (req, res, next) => {
         next(error);
     }
 };
+
+// ========Below this line is code not available at client UI===========
 
 // get all user
 // GET
@@ -176,7 +206,6 @@ export const DELETE_USER = async (req, res, next) => {
         // If user id not found
         if (!deletedUser) return next(createError(404, `Cannot delete user with ID of ${id}`))
         
-
         res.status(200).json(deletedUser);
     } catch (error) {
         next(error);
