@@ -2,6 +2,7 @@ import subcategoryModel from "../models/subcategoryModel.js";
 import categoryModel from "../models/categoryModel.js";
 import createError from "../utils/createError.js";
 
+
 // get all subcategory
 // GET
 export const GET_ALL_SUBCATEGORY = async (req, res, next) => {

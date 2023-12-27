@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import VERIFY_HEADER from '../utils/verifyHeader.js';
-import { CREATE_USER, DELETE_USER, GET_ALL_USER, GET_USER, SIGNIN_USER, SIGNOUT_USER, UPDATE_USER } from '../controller/userControl.js';
+import { CREATE_USER, DELETE_USER, GET_ALL_USER, GET_USER, REFRESH_USER, SIGNIN_USER, SIGNOUT_USER, UPDATE_USER } from '../controller/userControl.js';
 import { VERIFY_ADMIN, VERIFY_TOKEN, VERIFY_USER } from '../utils/verifySecrets.js';
 
 // Create new user
@@ -15,6 +15,10 @@ router.post('/signin', VERIFY_HEADER, SIGNIN_USER);
 // Sign out new user
 // GET
 router.get('/signout', VERIFY_HEADER, SIGNOUT_USER);
+
+// Refresh user
+// GET
+router.get('/refresh', VERIFY_HEADER, REFRESH_USER);
 
 // Get all user
 // GET

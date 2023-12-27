@@ -1,9 +1,9 @@
 import productModel from '../models/productModel.js'
 import createError from '../utils/createError.js';
 
+
 // get all products
 // GET
-
 export const GET_ALL_PRODUCT = async (req, res, next) => {
     try {
         const search = req.query.search || '';

@@ -3,25 +3,6 @@ import userModel from '../models/userModel.js';
 import createError from '../utils/createError.js';
 import { VERIFY_TOKEN } from '../utils/verifySecrets.js';
 
-// get all bag
-// GET
-export const GET_ALL_BAG = async (req, res, next) => {
-    try {
-        const allBags = await bagModel.find({})
-            .populate('userId')
-            .populate('cart.product')
-            .populate('wishlist.product');
-
-        // If no bags are found
-        if (allBags.length === 0) {
-            return next(createError(404, 'No bags found'));
-        }
-
-        res.status(200).json(allBags);
-    } catch (error) {
-        next(error);
-    }
-};
 
 // get user bag
 // GET
@@ -73,7 +54,7 @@ export const CREATE_BAG = async (req, res, next) => {
 
             // If post request is failed 
             if (!createdBag) return next(createError(500, `Failed create bag for user with ID of ${id}`));
-
+            
             res.status(200).json({
                 cart: createdBag.cart,
                 wishlist: createdBag.wishlist
@@ -93,7 +74,7 @@ export const UPDATE_BAG = async (req, res, next) => {
             // id is the user's _id from credentials included in cookie
             const { id } = req.user;
             const { cart, wishlist } = req.body;
-
+            
             const options = {
                 new: true,
                 populate: [
@@ -134,15 +115,38 @@ export const UPDATE_BAG = async (req, res, next) => {
 };
 
 
+// ========Below this line is code not available to client UI===========
+
+// get all bag
+// GET
+export const GET_ALL_BAG = async (req, res, next) => {
+    try {
+        const allBags = await bagModel.find({})
+            .populate('userId')
+            .populate('cart.product')
+            .populate('wishlist.product');
+
+        // If no bags are found
+        if (allBags.length === 0) {
+            return next(createError(404, 'No bags found'));
+        }
+
+        res.status(200).json(allBags);
+    } catch (error) {
+        next(error);
+    }
+};
+
+
 // Delete user's bag
 // DELETE
 export const DELETE_BAG = async (req, res, next) => {
     try {
         const { email } = req.body;
-
+        
         // Find the bag by ID
         const deletedBag = await bagModel.findOneAndDelete({ email });
-
+        
         // Check if the bag exists
         if (!deletedBag) {
             return next(createError(404, `Bag not found for user ${email}`));
