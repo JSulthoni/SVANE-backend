@@ -74,14 +74,6 @@ export const UPDATE_BAG = async (req, res, next) => {
             // id is the user's _id from credentials included in cookie
             const { id } = req.user;
             const { cart, wishlist } = req.body;
-            
-            const options = {
-                new: true,
-                populate: [
-                    { path: 'cart.product', select: '_id title description image1 price' },
-                    { path: 'wishlist.product', select: '_id title description image1 price' }
-                ]
-            };
 
             // Using findOneAndUpdate() to update user's bag
             const updatedBag = await bagModel.findOneAndUpdate(
@@ -96,18 +88,13 @@ export const UPDATE_BAG = async (req, res, next) => {
                             product: item._id 
                         })) : []
                     }
-                },
-                options
+                }
             );
             
             // Create error of gab is not found
             if (!updatedBag) return next(createError(404, `Cannot get bag for user with ID of ${id}`));
             
-
-            res.status(200).json({
-                cart: updatedBag.cart,
-                wishlist: updatedBag.wishlist
-            });
+            res.status(200).json('Bag Updated');
         });
     } catch (error) {
         next(error);

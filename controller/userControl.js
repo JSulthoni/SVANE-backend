@@ -5,6 +5,18 @@ import jwt from 'jsonwebtoken';
 import createError from "../utils/createError.js";
 import { VERIFY_TOKEN } from '../utils/verifySecrets.js';
 
+// This function it to sign user credentials
+const SIGN_TOKEN = (user) => {
+    const token = jwt.sign(
+        { id: user._id, isAdmin: user.isAdmin, isSeller: user.isSeller },
+        process.env.JWT_SECRET_KEY_DO_NOT_PUBLISH, 
+        {
+            expiresIn: '6h'
+        }
+    );
+    return token;
+}
+
 
 // Create a new user and issue access_token upon successful account creation
 // POST
@@ -41,13 +53,7 @@ export const CREATE_USER = async (req, res, next) => {
         }
 
         // Create a token for the newly created user
-        const token = jwt.sign(
-            { id: createdUser._id, isAdmin: createdUser.isAdmin, isSeller: createdUser.isSeller },
-            process.env.JWT_SECRET_KEY_DO_NOT_PUBLISH, 
-            {
-                expiresIn: '6h'
-            }
-        );
+        const token = SIGN_TOKEN(createdUser);
 
         if (createdUser && token) {
             // Destructuring to filter out sensitive information before sending it to client
@@ -56,6 +62,7 @@ export const CREATE_USER = async (req, res, next) => {
             // Set the token as a cookie and send it in the response
             res.cookie('access_token', token, {
                 httpOnly: true,
+                maxAge: 6 * 60 * 60 * 1000,
             }).status(201).json({...otherDetails});
         } else {
             return next(createError(500, `Failed create credentials for user ${email}`));
@@ -82,12 +89,7 @@ export const SIGNIN_USER = async (req, res, next) => {
         if (!isPassword) return next(createError(400, 'Invalid credentials'));
 
         // Create a token that will be send to user if request is successful
-        const token = jwt.sign({ id: isUser._id, isAdmin: isUser.isAdmin, isSeller: isUser.isSeller }, 
-            process.env.JWT_SECRET_KEY_DO_NOT_PUBLISH,
-            {
-                expiresIn: '6h'
-            }
-        );
+        const token = SIGN_TOKEN(isUser);
 
         // Destructuring to filter out sensitive information before sending it to client
         const { password, isAdmin, isSeller, ...otherDetails } = isUser._doc;
@@ -95,6 +97,7 @@ export const SIGNIN_USER = async (req, res, next) => {
         // Set the token as a cookie and send it in the response
         res.cookie('access_token', token, {
             httpOnly: true,
+            maxAge: 6 * 60 * 60 * 1000,
         }).status(201).json({...otherDetails});
     } catch (error) {
         next(error);
@@ -116,17 +119,16 @@ export const REFRESH_USER = async (req, res, next) => {
             if (!isUser) return next(createError(404, 'Credentials not found'));
 
             // Create a token that will be send to user if request is successful
-            const token = jwt.sign({ id: isUser._id, isAdmin: isUser.isAdmin, isSeller: isUser.isSeller }, 
-                process.env.JWT_SECRET_KEY_DO_NOT_PUBLISH,
-                {
-                    expiresIn: '6h'
-                }
-            );
-          
+            const token = SIGN_TOKEN(isUser);
+
+            // Destructuring to filter out sensitive information before sending it to client
+            const { password, isAdmin, isSeller, ...otherDetails } = isUser._doc;
+            
             // Set the token as a cookie and send it in the response
             res.cookie('access_token', token, {
                 httpOnly: true,
-            }).status(201).json('Welcome back to SVANE');
+                maxAge: 6 * 60 * 60 * 1000,
+            }).status(201).json({...otherDetails});
         })
     } catch (error) {
         next(error);
