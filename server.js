@@ -16,14 +16,21 @@ mongoose.set('strictQuery', false);
 dotenv.config();
 const app = express();
 
-// Middlewares
+
+// Cors setting
 app.use(cors({
     origin: process.env.CLIENT_URL,
-    credentials: true
+    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
 }));
+
+
+// Middlewares
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));
 app.use(cookieParser());
+
 
 // Setting file directories from url to path
 const __filename = fileURLToPath(import.meta.url);
@@ -46,9 +53,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'server.html'))
 });
 
+
 // Error Handling
 // This error handling is placed below any avaiable routes
-// It meant for access to routes other than the available, something went wrong with the access.
+// It meant for access to routes other than the available, or something went wrong with the access.
 app.use((error, req, res, next) => {
     const errorStatus = error.status || 500
     const errorMessage = error.message || 'Service not available on this server'
@@ -60,8 +68,9 @@ app.use((error, req, res, next) => {
     })
 });
 
+
 // MongoDB and server connection    
-const PORT = process.env.PORT || 3000; // PORT cyclic 3000
+const PORT = process.env.PORT || 3000; // PORT 3000
 const URI = process.env.VITE_MONGO_API_URL;
 mongoose.connect(URI)
     .then(() => {

@@ -46,6 +46,8 @@ export const GET_SUBCATEGORY = async (req, res, next) => {
 };
 
 
+// ========Below this line is code not available to client UI===========
+
 // update a subcategory
 // PUT
 export const UPDATE_SUBCATEGORY = async (req, res, next) => {

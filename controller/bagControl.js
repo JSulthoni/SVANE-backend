@@ -94,7 +94,7 @@ export const UPDATE_BAG = async (req, res, next) => {
             // Create error of gab is not found
             if (!updatedBag) return next(createError(404, `Cannot get bag for user with ID of ${id}`));
             
-            res.status(200).json('Bag Updated');
+            res.status(200).json('BAG UPDATED');
         });
     } catch (error) {
         next(error);
