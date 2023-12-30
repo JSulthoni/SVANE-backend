@@ -57,13 +57,13 @@ export const CREATE_USER = async (req, res, next) => {
 
         if (createdUser && token) {
             // Destructuring to filter out sensitive information before sending it to client
-            const { password, isAdmin, isSeller, ...otherDetails } = createdUser._doc;
+            const { email, ...otherDetails } = createdUser._doc;
 
             // Set the token as a cookie and send it in the response
             res.cookie('access_token', token, {
                 httpOnly: true,
                 maxAge: 6 * 60 * 60 * 1000,
-            }).status(201).json({...otherDetails});
+            }).status(201).json(email);
         } else {
             return next(createError(500, `Failed create credentials for user ${email}`));
         }
@@ -92,13 +92,13 @@ export const SIGNIN_USER = async (req, res, next) => {
         const token = SIGN_TOKEN(isUser);
 
         // Destructuring to filter out sensitive information before sending it to client
-        const { password, isAdmin, isSeller, ...otherDetails } = isUser._doc;
+        const { email, ...otherDetails } = isUser._doc;
         
         // Set the token as a cookie and send it in the response
         res.cookie('access_token', token, {
             httpOnly: true,
             maxAge: 6 * 60 * 60 * 1000,
-        }).status(201).json({...otherDetails});
+        }).status(201).json(email);
     } catch (error) {
         next(error);
     }
@@ -110,25 +110,25 @@ export const SIGNIN_USER = async (req, res, next) => {
 export const REFRESH_USER = async (req, res, next) => {
     try {
         await VERIFY_TOKEN(req, res, async () => {
-            const { id } = req.user;
+            const { id } = req.user || { id: undefined };
             // If user token expires, user will not have id present in verify token
             // thus will not return new access token 
-            if (!id) return next(createError(401, 'Please sign in again'));
+            if (!id) return;
 
             const isUser =  await userModel.findOne({ _id: id });
-            if (!isUser) return next(createError(404, 'Credentials not found'));
+            if (!isUser) return;
 
             // Create a token that will be send to user if request is successful
             const token = SIGN_TOKEN(isUser);
 
             // Destructuring to filter out sensitive information before sending it to client
-            const { password, isAdmin, isSeller, ...otherDetails } = isUser._doc;
+            const { email, ...otherDetails } = isUser._doc;
             
             // Set the token as a cookie and send it in the response
             res.cookie('access_token', token, {
                 httpOnly: true,
                 maxAge: 6 * 60 * 60 * 1000,
-            }).status(201).json({...otherDetails});
+            }).status(201).json(email);
         })
     } catch (error) {
         next(error);

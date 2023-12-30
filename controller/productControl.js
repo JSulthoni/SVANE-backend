@@ -95,7 +95,7 @@ export const GET_PRODUCT = async (req, res, next) => {
 export const UPDATE_PRODUCT = async (req, res, next) => {
     try {
         const { id } = req.params
-        const updatedProduct = await productModel.findByIdAndUpdate(req.params.id, 
+        const updatedProduct = await productModel.findByIdAndUpdate(id, 
             { $set: req.body }, 
             { new: true})
 

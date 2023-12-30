@@ -60,6 +60,13 @@ app.get('/', (req, res) => {
 app.use((error, req, res, next) => {
     const errorStatus = error.status || 500
     const errorMessage = error.message || 'Service not available on this server'
+
+    // Set CORS headers
+    res.header('Access-Control-Allow-Origin', process.env.CLIENT_URL);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+
     return res.status(errorStatus).json({
         success: false,
         status: errorStatus,
