@@ -87,6 +87,9 @@ export const GET_PRODUCT = async (req, res, next) => {
     }
 };
 
+
+// ========Below this line is code not available to client UI===========
+
 // Update a product
 // PUT
 export const UPDATE_PRODUCT = async (req, res, next) => {
