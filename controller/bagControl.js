@@ -10,7 +10,10 @@ export const GET_BAG = async (req, res, next) => {
     try {
         await VERIFY_TOKEN(req, res, async () => {
             // id is the user's _id from credentials included in cookie
-            const { id } = req.user;
+            const { id } = await req.user || { id: undefined };
+            // If user token expires, user will not have id present in verify token
+            // thus will not return new access token 
+            if (!id) return next(createError(500, `Failed get user's bag`));
 
             const getBag = await bagModel.findOne({ userId: id })
                 .populate({
@@ -36,13 +39,16 @@ export const GET_BAG = async (req, res, next) => {
 
 
 
-// create a single bag DELETE SOON
+// create a single bag
 // POST
 export const CREATE_BAG = async (req, res, next) => {
     try {
         await VERIFY_TOKEN(req, res, async () => {
             // id is the user's _id from credentials included in cookie
-            const { id } = req.user;
+            const { id } = await req.user || { id: undefined };
+            // If user cookie expires, user will not have id present in verify token
+            if (!id) return next(createError(500, `Failed initialize bag creation`));
+
             const user = await userModel.findOne({ _id: id });
 
             // Initializing user's bag as empty cart and wishlist array
@@ -72,8 +78,11 @@ export const UPDATE_BAG = async (req, res, next) => {
     try {
         await VERIFY_TOKEN(req, res, async () => {
             // id is the user's _id from credentials included in cookie
-            const { id } = req.user;
-            const { cart, wishlist } = req.body;
+            const { id } = await req.user || { id: undefined };
+            // If user token expires, user will not have id present in verify token
+            if (!id) return next(createError(500, `Failed update user's bag`));
+
+            const { cart, wishlist } = await req.body;
 
             // Using findOneAndUpdate() to update user's bag
             const updatedBag = await bagModel.findOneAndUpdate(
@@ -129,7 +138,7 @@ export const GET_ALL_BAG = async (req, res, next) => {
 // DELETE
 export const DELETE_BAG = async (req, res, next) => {
     try {
-        const { email } = req.body;
+        const { email } = await req.body;
         
         // Find the bag by ID
         const deletedBag = await bagModel.findOneAndDelete({ email });
