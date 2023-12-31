@@ -110,8 +110,8 @@ export const SIGNIN_USER = async (req, res, next) => {
 export const REFRESH_USER = async (req, res, next) => {
     try {
         await VERIFY_TOKEN(req, res, async () => {
-            const { id } = req.user || { id: undefined };
-            // If user token expires, user will not have id present in verify token
+            const { id } = await req.user || { id: undefined };
+            // If user cookie expires, user will not have id present in verify token
             // thus will not return new access token 
             if (!id) return;
 
