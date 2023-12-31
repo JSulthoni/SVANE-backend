@@ -14,13 +14,14 @@ export const STRIPE_CHECKOUT = async (req, res, next) => {
     try {
         await VERIFY_TOKEN(req, res, async () => {
             // id is the user's _id from credentials included in cookie
-            const { id } = req.user;
+            const { id } = await req.user || { id: undefined };
+            // If user token expires, user will not have id present in verify token
+            // thus will not return new access token 
+            if (!id) return next(createError(403, 'You are not authorized!'));
 
             // In this function, the array of object of products is referenced as { cart }
-            const { cart } = req.body
-
             // Options wether the checkout is made from cart or wishlist or direct from product page
-            const { option } = req.body
+            const { cart, option } = await req.body
 
             // Initializing stripe session if there are request from frontend
             const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {

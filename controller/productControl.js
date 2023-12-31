@@ -17,7 +17,7 @@ export const GET_ALL_PRODUCT = async (req, res, next) => {
         // This block of code sets the subcategory to 'all' if there arent gquery for subcategory
         let setSubcategory;
             if (subcategory) {
-                setSubcategory = subcategory.split(',')
+                setSubcategory = subcategory.split(',');
             } else {
                 setSubcategory = 'all'
             }
@@ -75,8 +75,8 @@ export const GET_ALL_PRODUCT = async (req, res, next) => {
 // GET
 export const GET_PRODUCT = async (req, res, next) => {
     try {
-        const { id } = req.params
-        const getProduct = await productModel.findById(id)
+        const { id } = req.params;
+        const getProduct = await productModel.findById(id);
 
         // If request is failed or product id not found
         if (!getProduct) return next(createError(404, `Cannot get product with ID of ${id}`));
@@ -112,7 +112,7 @@ export const UPDATE_PRODUCT = async (req, res, next) => {
 // PUT
 export const UPDATE_MANY_PRODUCTS = async (req, res, next) => {
     try {
-        const updatePayload = req.body
+        const updatePayload = await req.body
         const updatedProducts = await Promise.all(
             updatePayload.map( async (update) => {
                 const { _id, ...updateFields} = update;
@@ -139,7 +139,7 @@ export const UPDATE_MANY_PRODUCTS = async (req, res, next) => {
 // POST
 export const CREATE_PRODUCT = async (req, res, next) => {
     try {
-        const createPayload = req.body;
+        const createPayload = await req.body;
         const createdProducts = await productModel.create(createPayload);
 
         // If post request is failed 

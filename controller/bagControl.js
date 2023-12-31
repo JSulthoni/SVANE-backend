@@ -13,7 +13,7 @@ export const GET_BAG = async (req, res, next) => {
             const { id } = await req.user || { id: undefined };
             // If user token expires, user will not have id present in verify token
             // thus will not return new access token 
-            if (!id) return next(createError(500, `Failed get user's bag`));
+            if (!id) return next(createError(403, 'You are not authorized!'));
 
             const getBag = await bagModel.findOne({ userId: id })
                 .populate({
@@ -47,7 +47,7 @@ export const CREATE_BAG = async (req, res, next) => {
             // id is the user's _id from credentials included in cookie
             const { id } = await req.user || { id: undefined };
             // If user cookie expires, user will not have id present in verify token
-            if (!id) return next(createError(500, `Failed initialize bag creation`));
+            if (!id) return next(createError(403, 'You are not authorized!'));
 
             const user = await userModel.findOne({ _id: id });
 
@@ -80,7 +80,7 @@ export const UPDATE_BAG = async (req, res, next) => {
             // id is the user's _id from credentials included in cookie
             const { id } = await req.user || { id: undefined };
             // If user token expires, user will not have id present in verify token
-            if (!id) return next(createError(500, `Failed update user's bag`));
+            if (!id) return next(createError(403, 'You are not authorized!'));
 
             const { cart, wishlist } = await req.body;
 
