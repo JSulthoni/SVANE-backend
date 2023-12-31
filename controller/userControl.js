@@ -23,7 +23,7 @@ const SIGN_TOKEN = (user) => {
 export const CREATE_USER = async (req, res, next) => {
     try {
         // Checking if the body has all the required parameters
-        const { email, password, wishlist } = await req.body
+        const { email, password, wishlist } = await req.body;
 
         // Creating new user
         // Using bcryptjs to hash password, email and password are provided from client
