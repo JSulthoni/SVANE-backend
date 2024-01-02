@@ -25,7 +25,6 @@ export const VERIFY_USER = async (error, req, res, next) => {
     try {
         await VERIFY_TOKEN(req, res, async () => {
             // If statement to check if the requester id in the token is the same with the params or isAdmin
-            // req.user refers to const token = jwt.sign at userControl.js
             if (req.user.id === req.params.id || req.user.isAdmin) {
                 next();
             } else if (error) {
@@ -39,11 +38,10 @@ export const VERIFY_USER = async (error, req, res, next) => {
 };
 
 // This function is used to verify if user is admin
-export const VERIFY_ADMIN = (error, req, res, next) => {
-    VERIFY_TOKEN(req, res, next, () => {
+export const VERIFY_ADMIN = async (error, req, res, next) => {
+    await VERIFY_TOKEN(req, res, next, () => {
 
         // If statement to check if the request is from isAdmin
-        // req.user refer to const token = jwt.sign at userControl.js
         if (req.user.isAdmin) {
             next();
 
