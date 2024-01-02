@@ -2,8 +2,6 @@ import categoryModel from "../models/categoryModel.js";
 import createError from "../utils/createError.js";
 
 
-// ========Below this line is code not available to client UI===========
-
 // get all category
 // GET
 export const GET_ALL_CATEGORY = async (req, res, next) => {
@@ -46,6 +44,8 @@ export const GET_CATEGORY = async (req, res, next) => {
     }
 };
 
+
+// ========Below this line is code not available to client UI===========
 
 // update a category
 // PUT

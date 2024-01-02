@@ -1,9 +1,11 @@
+import mongoose from 'mongoose';
 import userModel from '../models/userModel.js';
 import bagModel from '../models/bagModel.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import createError from "../utils/createError.js";
 import { VERIFY_TOKEN } from '../utils/verifySecrets.js';
+
 
 // This function it to sign user credentials
 const SIGN_TOKEN = (user) => {
@@ -17,10 +19,20 @@ const SIGN_TOKEN = (user) => {
     return token;
 }
 
+// This is the cookie option for setting cookies
+const cookie_option = {
+    httpOnly: true,
+    maxAge: 6 * 60 * 60 * 1000,
+    secure: process.env.NODE_ENV === 'production',
+}
+
 
 // Create a new user and issue access_token upon successful account creation
 // POST
 export const CREATE_USER = async (req, res, next) => {
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
     try {
         // Checking if the body has all the required parameters
         const { email, password, wishlist } = await req.body;
@@ -29,45 +41,43 @@ export const CREATE_USER = async (req, res, next) => {
         // Using bcryptjs to hash password, email and password are provided from client
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
-        const createdUser = await userModel.create({
-            email: email,
-            password: hash
-        });
+        const createdUser = await userModel.create(
+            [{ email: email, password: hash }],
+            { session: session }
+        );
 
-        // Initializing user's bag if user account successfully created
-        if (createdUser) {
-            const createdBag = await bagModel.create({
-                userId: createdUser._id,
-                cart: [],
+        // Initializing user's bag
+        const createdBag = await bagModel.create(
+            [
+                {
+                    userId: createdUser[0]._id,
+                    cart: [],
 
-                // User may have wishlist before creating an account. when user create an account, the data in wishlist will be taken into bag creation
-                wishlist: wishlist.length > 0 ? wishlist.map((item) => ({ 
-                    product: item._id 
-                })) : []
-            });
-            // If server fails to create user bag
-            if (!createdBag) return next(createError(500, `Failed create bag for user with ID of ${createdUser._id}`));
-        }   else {
-            // If server fails to create user account
-            return next(createError(500, `Failed to create an account for user: ${email}`));
+                    // User may have wishlist before creating an account. when user create an account, the data in wishlist will be taken into bag creation
+                    wishlist: wishlist.length > 0 ? wishlist.map((item) => ({ product: item._id })) : []
+                },
+            ],
+            { session: session }
+        );
+
+        await session.commitTransaction();
+        session.endSession();
+
+        // If server fails to create user bag or user account
+        if (!createdUser || !createdBag) {
+            return next(createError(500, `Failed to create user and bag for user ${email}.`));
         }
 
         // Create a token for the newly created user
-        const token = SIGN_TOKEN(createdUser);
+        const token = SIGN_TOKEN(createdUser[0]);
 
-        if (createdUser && token) {
-            // Destructuring to filter out sensitive information before sending it to client
-            const { email, ...otherDetails } = createdUser._doc;
+        // Filtering data before sending it back to client
+        const { email: userEmail, ...otherDetails } = createdUser[0]._doc;
 
-            // Set the token as a cookie and send it in the response
-            res.cookie('access_token', token, {
-                httpOnly: true,
-                maxAge: 6 * 60 * 60 * 1000,
-            }).status(201).json(email);
-        } else {
-            return next(createError(500, `Failed create credentials for user ${email}`));
-        }
+        res.cookie('access_token', token, cookie_option).status(201).json(userEmail);
     } catch (error) {
+        await session.abortTransaction();
+        session.endSession();
         next(error);
     }
 };
@@ -95,10 +105,7 @@ export const SIGNIN_USER = async (req, res, next) => {
         const { email, ...otherDetails } = isUser._doc;
         
         // Set the token as a cookie and send it in the response
-        res.cookie('access_token', token, {
-            httpOnly: true,
-            maxAge: 6 * 60 * 60 * 1000,
-        }).status(201).json(email);
+        res.cookie('access_token', token, cookie_option).status(201).json(email);
     } catch (error) {
         next(error);
     }
@@ -125,30 +132,25 @@ export const REFRESH_USER = async (req, res, next) => {
             const { email, ...otherDetails } = isUser._doc;
             
             // Set the token as a cookie and send it in the response
-            res.cookie('access_token', token, {
-                httpOnly: true,
-                maxAge: 6 * 60 * 60 * 1000,
-            }).status(201).json(email);
+            res.cookie('access_token', token, cookie_option).status(201).json(email);
         })
     } catch (error) {
         next(error);
     }
 };
 
+
 // Sign Out single user
 // GET
 export const SIGNOUT_USER = (req, res, next) => {
     try {
-        res.cookie('access_token', '0', 
-        {
-            httpOnly: true,
-            maxAge: 1
-        }
+        res.cookie('access_token', '0', { ...cookie_option, maxAge: 1 }
         ).status(201).json('Sign Out Success');
     } catch (error) {
         next(error);
     }
 };
+
 
 // ========Below this line is code not available at client UI===========
 

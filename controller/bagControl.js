@@ -25,7 +25,7 @@ export const GET_BAG = async (req, res, next) => {
                     select: '_id title description image1 price'
                 });
 
-            if (!getBag) return next(createError(404, `Cannot get bag for user with ID of ${id}`));
+            if (!getBag) return next(createError(404, `Failed to get bag for user with ID: ${id}`));
             
             res.status(200).json({
                 cart: getBag.cart,
@@ -59,7 +59,7 @@ export const CREATE_BAG = async (req, res, next) => {
             });
 
             // If post request is failed 
-            if (!createdBag) return next(createError(500, `Failed create bag for user with ID of ${id}`));
+            if (!createdBag) return next(createError(500, `Failed to create bag for user with ID: ${id}`));
             
             res.status(200).json({
                 cart: createdBag.cart,
@@ -101,7 +101,7 @@ export const UPDATE_BAG = async (req, res, next) => {
             );
             
             // Create error of gab is not found
-            if (!updatedBag) return next(createError(404, `Cannot get bag for user with ID of ${id}`));
+            if (!updatedBag) return next(createError(404, `Failed to update bag for user with ID: ${id}`));
             
             res.status(200).json('BAG UPDATED');
         });

@@ -37,6 +37,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 
+// Server homepage
+app.get('/', (req, res) => {
+    // Serve static files from the root directory
+    app.use(express.static(path.join(__dirname)));
+    res.sendFile(path.join(__dirname, 'server.html'));
+});
+
+
 // Routes
 app.use('/api/products', productRoute);
 app.use('/api/stripe', stripeRoute);
@@ -46,20 +54,15 @@ app.use('/api/bag', bagRoute);
 app.use('/api/user', userRoute);
 
 
-// Server homepage
-app.get('/', (req, res) => {
-    // Serve static files from the root directory
-    app.use(express.static(path.join(__dirname)));
-    res.sendFile(path.join(__dirname, 'server.html'))
-});
-
-
 // Error Handling
 // This error handling is placed below any avaiable routes
 // It meant for access to routes other than the available, or something went wrong with the access.
 app.use((error, req, res, next) => {
-    const errorStatus = error.status || 500
-    const errorMessage = error.message || 'Service not available on this server'
+    const errorStatus = error.status || 500;
+    const errorMessage = error.message || 'Service not available on this server';
+
+    // Log the error on the server side
+    console.error(error);
 
     // Set CORS headers
     res.header('Access-Control-Allow-Origin', process.env.CLIENT_URL);
@@ -71,7 +74,7 @@ app.use((error, req, res, next) => {
         success: false,
         status: errorStatus,
         message: errorMessage,
-        stack: error.stack
+        // stack: error.stack // Omitting stack trace in the response for security reasons in production
     })
 });
 
