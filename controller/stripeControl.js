@@ -21,7 +21,7 @@ export const STRIPE_CHECKOUT = async (req, res, next) => {
 
             // In this function, the array of object of products is referenced as { cart }
             // Options wether the checkout is made from cart or wishlist or direct from product page
-            const { cart, option } = await req.body
+            const { payload, option } = await req.body
 
             // Initializing stripe session if there are request from frontend
             const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
@@ -31,7 +31,7 @@ export const STRIPE_CHECKOUT = async (req, res, next) => {
             // This expression is to fetch the price from backend by looking the id of ordered
             // produnct from the frontend
             const line_item = await Promise.all(
-                cart.map( async (item) => {
+                payload.map( async (item) => {
                     const product = await productModel.findById(item.product._id);
                     if (!product) {
                         return next(createError(404, `Product not found for ${item.product._id}`));
@@ -65,7 +65,7 @@ export const STRIPE_CHECKOUT = async (req, res, next) => {
             await stripeModel.create({
                 userId: id,
                 stripeId: session.id,
-                products: [ ...cart ]
+                products: [ ...payload ]
             });
 
             // Remove purchased items from user's cart after a successful checkout
@@ -73,14 +73,14 @@ export const STRIPE_CHECKOUT = async (req, res, next) => {
                 // Run the logic for the cart option
                 await bagModel.findOneAndUpdate(
                     { userId: id },
-                    { $pull: { cart: { 'product': { $in: cart.map((item) => item.product._id) } } } },
+                    { $pull: { cart: { 'product': { $in: payload.map((item) => item.product._id) } } } },
                     { new: true }
                 );
             } else if (option === 'wishlist') {
                 // Run the logic for the wishlist option
                 await bagModel.findOneAndUpdate(
                     { userId: id },
-                    { $pull: { wishlist: { 'product': { $in: cart.map((item) => item.product._id) } } } },
+                    { $pull: { wishlist: { 'product': { $in: payload.map((item) => item.product._id) } } } },
                     { new: true }
                 );
             }

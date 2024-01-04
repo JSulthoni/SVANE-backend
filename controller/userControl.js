@@ -74,7 +74,7 @@ export const CREATE_USER = async (req, res, next) => {
         // Filtering data before sending it back to client
         const { email: userEmail, ...otherDetails } = createdUser[0]._doc;
 
-        res.cookie('access_token', token, cookie_option).status(201).json(userEmail);
+        res.cookie('access_token', token, cookie_option).status(201).json({ email: userEmail });
     } catch (error) {
         await session.abortTransaction();
         session.endSession();
